@@ -3,7 +3,7 @@
 ---
 
 ## Overview
-**ChemLab** is a comprehensive calculator for General Chemistry and Biochemistry Solutions
+**ChemLab** is a coursework of senior computer science students. It is a comprehensive calculator for General Chemistry and Biochemistry Solutions developed in 2025
 
 ---
 
@@ -25,8 +25,5 @@
 - **Protein Solubility Calculator**
 - **Resuspension Calculator**
 
----
-
-Chemlab was developed by senior Computer Science students as a project for software engineering course in 2025. 
 
 

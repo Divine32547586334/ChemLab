@@ -27,6 +27,6 @@
 
 ---
 
-# Chemlab was developed by senior Computer Science students as a project for software engineering course in 2025. 
+Chemlab was developed by senior Computer Science students as a project for software engineering course in 2025. 
 
 

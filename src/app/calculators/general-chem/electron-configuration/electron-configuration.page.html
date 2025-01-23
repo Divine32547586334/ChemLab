@@ -1,0 +1,122 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Electron Configuration</ion-title>
+    <ion-buttons slot="end">
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="electron-configuration-content">
+    <div class="calculator-container">
+      <ion-card class="calculator">
+        <ion-card-header class="calculator-header">
+          <ion-card-title>
+            Electron Configuration Calculator
+          </ion-card-title>
+        </ion-card-header>
+
+        <ion-card class="card-1">
+          <ion-card class="card-1-content">
+            <ion-item>
+              <ion-select [(ngModel)]="selectedElement" label="Select an element" interface="popover" placeholder="Choose an element" (ionChange)="onElementChange()">
+                <ion-select-option *ngFor="let element of elements" [value]="element.symbol">
+                  {{ element.name }} ({{ element.symbol }})
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-card>
+          
+        </ion-card>
+
+        <ion-card class="calculator-content">
+          <!-- Always visible card for element details -->
+          <ion-card class="card-2">
+            <ion-card class="card-2-header">
+              <ion-card-header>
+                <ion-card-title>{{ selectedElementData?.name }} ({{ selectedElementData?.symbol }})</ion-card-title>
+              </ion-card-header>
+            </ion-card>
+      
+            <!-- Atomic Number -->
+            <ion-item>
+              <ion-label slot="start">Atomic Number</ion-label>
+              <ion-label slot="end">{{ selectedElementData?.atomicNumber || '' }}</ion-label>
+            </ion-item>
+      
+            <!-- Atomic Mass -->
+            <ion-item>
+              <ion-label slot="start">Atomic Mass</ion-label>
+              <ion-label slot="end">{{ selectedElementData?.atomicMass || '' }}</ion-label>
+            </ion-item>
+          </ion-card>
+      
+          <!-- Card for Electron Configuration and Valence Electrons -->
+          <ion-card class="card-3">
+
+            <!-- Electron Configuration -->
+            <ion-item>
+              <ion-label slot="start">Electron Configuration</ion-label>
+              <ion-label slot="end">{{ selectedElementData?.electronConfiguration || '' }}</ion-label>
+            </ion-item>
+      
+            
+            <!-- Valence Electrons -->
+            <ion-item>
+              <ion-label slot="start">Valence Electrons</ion-label>
+              <ion-label slot="end">{{ selectedElementData?.valenceElectrons || '' }}</ion-label>
+            </ion-item>
+          </ion-card>
+          <ion-button class="clear" expand="block" color="danger" (click)="clearInputs()">Clear</ion-button>
+          </ion-card>
+        </ion-card>
+        
+    </div>
+    <div class="button-container">
+      <ion-button expand="block" (click)="toggleContent()">
+        {{ showContent ? 'Hide Details' : 'About Electron Configuration Calculator' }}
+      </ion-button>
+    </div>
+    <div class="description-container" *ngIf="showContent">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Electron Configuration</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <h3>Electron Configuration Calculator</h3>
+          <p>The Electron Configuration calculator will instantly show you the distribution of electrons in the orbitals of any periodic element you choose. Typically, you need at least 8 steps to determine the electron configuration, starting with finding the atomic number by looking at the list of orbitals and understanding the notation.</p>
+          <br>
+          <h3>Electron Configuration Chart and Hund's Rule</h3>
+          <p>To write down the electron configuration of a given atom, we use general rules:</p>
+          <ul>
+            <li><strong>The Aufbau Principle:</strong> Electrons always occupy orbitals of increasing energy. The order in which orbitals are occupied is as follows:</li>
+          </ul>
+      
+          <pre>
+            1s ← 2s ← 2p ← 3s ← 3p ← 4s ← 3d ← 4p ← 5s ← 4d ← 5p ← 6s ← 4f ← 5d ← 6p ← 7s ← 5f ← 6d ← 7p
+          </pre>
+      
+          <ul>
+            <li><strong>Hund's Rule:</strong> An atom in the ground state always has as many unpaired electrons as possible. Electron pairs only form after all orbital levels have been filled with unpaired electrons. For example, the ground state electron configuration of nitrogen (1s²2s²2p³) indicates that it has 3 electrons occupying the 2p orbital. According to Hund’s rule, one electron fills each 2p orbital, and each electron has the same spin.</li>
+            <li><strong>Pauli Exclusion Principle:</strong> If two electrons occupy the same orbital, their spins must be paired, as indicated by the direction of the arrows (↑) and (↓).</li>
+          </ul>
+      
+          <h3>Example: Electron Configuration of Carbon</h3>
+          <p>Let’s combine these rules to write down the electron configuration of carbon with an atomic number of 6 (meaning it contains 6 electrons in its ground state).</p>
+          <p>According to the electron configuration chart, we will put 6 electrons in the following orbitals:</p>
+          <pre>C = 1s² 2s² 2p²</pre>
+          <p>The 1s and 2s orbitals are successively filled with two electrons. The next two electrons will enter the 2p orbital, filling them in an anti-clockwise direction as shown in the diagram of the carbon orbitals.</p>
+        </ion-card-content>
+        <div class="credits">
+          <p>Credits to Joanna Śmietańska, PhD</p>
+        </div>
+      </ion-card>
+      
+    </div>
+  </div>
+  
+</ion-content>

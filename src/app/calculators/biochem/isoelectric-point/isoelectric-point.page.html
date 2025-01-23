@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Isoelectric Point</ion-title>
+    <ion-buttons slot="end">
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="isoelectric-point-content">
+    <div class="calculator-container">
+      <ion-card class="calculator">
+        <ion-card-header class="calculator-header">
+          <ion-card-title>
+            Isoelectric Point Calculator
+          </ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-card class="first-card">
+            <ion-card class="first-card-content">
+              <!-- pKa Input -->
+              <ion-item class="label" lines="none">
+                <ion-label>pKa</ion-label>
+              </ion-item>
+              <ion-item class="input">
+                <ion-input 
+                  type="number" 
+                  [(ngModel)]="pKa" 
+                  (ionInput)="calculateIsoelectricPoint('pKa')" 
+                  placeholder="Enter value">
+                </ion-input>
+              </ion-item>
+  
+              
+            </ion-card>
+          </ion-card>
+          
+          <ion-card class="second-card">
+            <ion-card class="second-card-content">
+              <!-- pKb Input -->
+              <ion-item class="label"  lines="none">
+                <ion-label>pKb</ion-label>
+              </ion-item>
+              <ion-item class="input">
+                <ion-input 
+                  type="number" 
+                  [(ngModel)]="pKb" 
+                  (ionInput)="calculateIsoelectricPoint('pKb')" 
+                  placeholder="Enter value">
+                </ion-input>
+              </ion-item>
+            </ion-card>
+          </ion-card>
+          <ion-card class="third-card">
+            <ion-card class="third-card-content">
+              <!-- Isoelectric Point -->
+              <ion-item class="label" lines="none">
+                <ion-label>Isoelectric point</ion-label>
+              </ion-item>
+              <ion-item class="input">
+                <ion-input 
+                  type="number" 
+                  [(ngModel)]="pI" 
+                  (ionInput)="calculateIsoelectricPoint('pI')" 
+                  placeholder="Enter value">
+                </ion-input>
+              </ion-item>
+            </ion-card>
+          </ion-card>
+          <ion-button expand="block" color="danger" (click)="clearInputs()">Clear All</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div class="button-container">
+      <ion-button expand="block" (click)="toggleContent()">
+        {{ showContent ? 'Hide Details' : 'About Isoelectric Point Calculator' }}
+      </ion-button>
+    </div>
+    <div class="description-container" *ngIf="showContent">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Isoelectric Point</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p><strong>Isoelectric point</strong> is the pH value at which a molecule has zero net electrical charge and is considered neutral. It is a critical concept in chemistry, especially when studying molecules like proteins, which can change their shape and functionality depending on the pH of their environment.</p>
+          <br>
+          <h3>Significance of determining the Isoelectric Point</h3>
+          <p>Knowing the isoelectric point is crucial for understanding the behavior of molecules, especially proteins, in different pH environments. Here are some of the key reasons why determining the isoelectric point is important:</p>
+          <ul>
+            <li><strong>Insight into molecule behavior:</strong> Understanding the isoelectric point helps predict how molecules behave in different pH environments, which is important in biological systems.</li>
+            <li><strong>Applications in protein purification:</strong> In protein chemistry, knowing the isoelectric point helps in purifying proteins through techniques like isoelectric focusing.</li>
+            <li><strong>Influence on solubility:</strong> The isoelectric point of proteins and other molecules impacts their solubility in water and other solvents, which is important for biochemical assays.</li>
+            <li><strong>Optimization in industrial processes:</strong> The isoelectric point is useful in optimizing various industrial processes, including pharmaceuticals and food processing, where protein behavior is critical.</li>
+          </ul>
+        </ion-card-content>
+        <div class="credits">
+          <p>Credits to Komal Rafay</p>
+          <p>Reviewed by Steven Wooding</p>
+        </div>
+      </ion-card>
+      
+    </div>
+  </div>
+</ion-content>

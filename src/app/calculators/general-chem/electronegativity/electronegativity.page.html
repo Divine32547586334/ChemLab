@@ -1,0 +1,134 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Electronegativity</ion-title>
+    <ion-buttons slot="end">
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="electronegativity-content">
+    <div class="calculator-container">
+      <ion-card class="calculator">
+        <ion-card-header class="calculator-header">
+          <ion-card-title>
+            Electronegativity Calculator
+          </ion-card-title>
+        </ion-card-header>
+
+          <ion-card class="card-1">
+            <ion-card class="card-1-content">
+              <ion-card class="first-element">
+                <ion-item lines="none">
+                  <ion-label>First element: </ion-label>
+                  <ion-select slot="end" [(ngModel)]="selectedFirstElement" interface="popover" placeholder="Select">
+                    <ion-select-option *ngFor="let element of elements" [value]="element">
+                      {{ element.name }} ({{ element.symbol }})
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-card>
+              <ion-card class="second-element">
+                <ion-item lines="none">
+                  <ion-label>Second element: </ion-label>
+                  <ion-select slot="end" [(ngModel)]="selectedSecondElement" interface="popover" placeholder="Select">
+                    <ion-select-option *ngFor="let element of elements" [value]="element">
+                      {{ element.name }} ({{ element.symbol }})
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-card>
+            </ion-card>
+          </ion-card>
+
+          <ion-card class="card-2">
+            <ion-card-header>
+              <ion-card-title>Electronegativity</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-card class="first">
+                <ion-item class="label" lines="none">
+                  <ion-label slot="start">First atom</ion-label>
+                  <ion-input slot="end" type="number" [value]="selectedFirstElement?.electronegativity" readonly></ion-input>
+                </ion-item>
+              </ion-card>
+
+              <ion-card class="second">
+                <ion-item class="label" lines="none">
+                  <ion-label slot="start">Second atom</ion-label>
+                  <ion-input slot="end" type="number" [value]="selectedSecondElement?.electronegativity" readonly></ion-input>
+                </ion-item>
+              </ion-card>
+              
+              <ion-card class="third">
+                <ion-item class="label" lines="none">
+                  <ion-label slot="start">Difference</ion-label>
+                  <ion-input slot="end" type="number" [value]="calculateDifference()" readonly></ion-input>
+                </ion-item>
+              </ion-card>
+              
+              <ion-card class="fourth">
+                <ion-item class="label" lines="none">
+                  <ion-label slot="start">Bond</ion-label>
+                  <ion-input slot="end" [value]="determineBond()" readonly></ion-input>
+                </ion-item>
+              </ion-card>
+              
+            </ion-card-content>
+          </ion-card>
+
+            <ion-button class="clear" expand="block" color="danger" (click)="clearAll()">Clear All</ion-button>
+
+      </ion-card>
+    </div>
+    <div class="button-container">
+      <ion-button expand="block" (click)="toggleContent()">
+        {{ showContent ? 'Hide Details' : 'About Electronegativity Calculator' }}
+      </ion-button>
+    </div>
+    <div class="description-container" *ngIf="showContent">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Electronegativity</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <h3>Electronegativity and Bond Type</h3>
+          <p>Electronegativity is a measure that varies between atoms and influences their chemical properties and the type of bond the atoms will form.</p>
+          
+          <h3>Electronegativity Calculator</h3>
+          <p>The electronegativity calculator allows you to calculate the type of bond formed between different elements using their electronegativity values. You can also use our tool as an electronegativity difference calculator to determine the difference between the electronegativity values of elements.</p>
+      
+          <h4>Steps to Calculate the Type of Bond</h4>
+          <ol>
+            <li>Select the electronegativity value of the first element.</li>
+            <li>Select the electronegativity value of the second element.</li>
+            <li>The calculator calculates the difference between these two electronegativities and then displays the type of bond that these two elements form. This feature is also known as the ionic or covalent calculator.</li>
+          </ol>
+      
+          <h3>Example</h3>
+          <p>For instance, sodium (Na) metal and chlorine (Cl) non-metal combine to form sodium chloride (NaCl), commonly known as table salt. This NaCl molecule is bonded by an ionic bond, whereas hydrogen (H) and hydrogen (H) bond covalently to form a dihydrogen (H2) molecule.</p>
+      
+          <h3>Electronegativity Formula</h3>
+          <p>The formula for the electronegativity difference (END) is:</p>
+          <pre>END = |χ of first element - χ of second element|</pre>
+          <p>Where:</p>
+          <ul>
+            <li><strong>END:</strong> Electronegativity difference;</li>
+            <li><strong>χ:</strong> Electronegativity value of an element;</li>
+            <li><strong>|x|:</strong> Absolute value of x (to ensure the END value is always positive).</li>
+          </ul>
+        </ion-card-content>
+        <div class="credits">
+          <p>Credits to Komal Rafay</p>
+        </div>
+      </ion-card>
+      
+
+      
+      </div>
+  </div>
+</ion-content>

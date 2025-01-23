@@ -1,0 +1,138 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+ion-card.ios{
+  margin-inline-start: 8px;
+  margin-inline-end: 8px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  font-size: 0.5rem;
+}
+/* Global Styling for ion-select Popover */
+ion-popover::part(content) {
+  }
+  .list-md {
+    margin: 0; /* Reset margins */
+    padding: 6px; /* Adjust padding */
+    background: aliceblue; /* Custom background color */
+  }
+  ion-popover::part(content) ion-select-popover{
+    --background:var(--background);
+  }
+  /* Optional: Style Popover Items */
+  ion-popover ion-item {
+    --background: aliceblue; /* Slightly lighter red for items */
+    --color: #152639 ; /* White text for contrast */
+    border-radius: 4px;
+  }
+  
+  /* Highlight Selected Item */
+  ion-popover ion-item.selected {
+    --background: #0AD1C8; /* Darker red for selected item */
+    --color: #152639;
+    font-weight: bold;
+  }
+  
+  ion-popover ion-item:hover {
+    --background: rgba(10, 209, 200, 0.25); /* Hover background */
+    --color: #152639; /* Text color on hover */
+  }
+  ion-item.ion-focused .item-native::after {
+    background: #0AD1C8;
+    --background-focused: #0AD1C8; /* Red background when focused */
+    --background-focused-opacity: 1; /* Adjust opacity */
+
+    transition: background 0.3s ease-in-out; /* Smooth transition */
+  }
+  /* Global Styling for Selected Ion-Select Popover Item */
+.item-radio-checked.sc-ion-select-popover-md {
+    --background: rgba(10, 209, 200, 1); /* Default State - 25% Opacity */
+    --background-focused: rgba(10, 209, 200, 1); /* Focused State - Fully Opaque */
+    --background-focused-opacity: 0; /* Ensures Full Opacity on Focus */
+
+
+  }
+
+  :root {
+    --ion-color-primary: #152639; /* Replace Primary Color Globally */
+    --color-checked: #152639; /* Custom Checked Color */
+}
+.ios {
+    :host {
+        --min-height: 44px;
+        --transition: background-color 200ms linear, opacity 200ms linear;
+        --padding-start: 16px;
+        --inner-padding-end: 16px;
+        --inner-border-width: 0px 0px 0.55px 0px;
+        --background: var(--ion-item-background, var(--ion-background-color, #fff));
+        --background-activated: var(--ion-text-color, #0AD1C8);
+        --background-focused: var(--ion-text-color, #0AD1C8);
+        --background-hover: currentColor;
+        --background-activated-opacity: .12;
+        --background-focused-opacity: .15;
+        --background-hover-opacity: .04;
+        --border-color: var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-250, var(--ion-background-color-step-250, #c8c7cc))));
+        /* Text Color */
+        --color: var(--ion-item-color, var(--ion-text-color, #0AD1C8));
+        font-size: 1rem;
+    }
+}
+
+/* Example: Customize background color and hover state for iOS */
+.ios ion-item {
+    --background: #f0f0f0; /* Light gray background for iOS */
+    --background-hover: #e0e0e0; /* Slightly darker gray when hovered */
+    --background-focused: #0AD1C8; /* Even darker when focused */
+    --color: #152639; /* Black text */
+}
+
+/* Customize hover and focus background for iOS */
+.ios ion-item:hover {
+    --background-hover: #c8c8c8; /* Darker background when hovered on iOS */
+}
+
+
+//caret color
+input {
+  caret-color: #152639 !important;
+}

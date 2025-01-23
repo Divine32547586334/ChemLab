@@ -1,0 +1,137 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Percent Ionic</ion-title>
+    <ion-buttons slot="end">
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="percent-ionic-content">
+    <div class="calculator-container">
+      <ion-card class="calculator">
+        <ion-card-header class="calculator-header">
+          <ion-card-title>
+            Percent Ion Calculator
+          </ion-card-title>
+        </ion-card-header>
+        <!-- <ion-card>
+          <ion-card-header>
+            <ion-card-title>Electronegativity</ion-card-title>
+          </ion-card-header>
+        </ion-card> -->
+    
+        <!-- First Atom Selection -->
+        <ion-card-content>
+          <ion-card class="first-atom-select">
+            <ion-card class="first-atom-select-content">
+              <ion-item>
+                <ion-select [(ngModel)]="firstAtom" label="First Atom" interface="popover" placeholder="Select" (ionChange)="calculateIonicCharacter()">
+                  <ion-select-option *ngFor="let element of elements" [value]="element.symbol">{{ element.name+" ("+element.symbol+")" }}</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item class="second-item" *ngIf="firstAtom">
+                <ion-label slot="start">X¹</ion-label>
+                <ion-label slot="end">{{ getElectronegativity(firstAtom) }}</ion-label>
+              </ion-item>
+            </ion-card>
+          </ion-card>
+      
+          <!-- Second Atom Selection -->
+          <ion-card class="second-atom-select">
+            <ion-card class="second-atom-select-content">
+              <ion-item>
+                <ion-select [(ngModel)]="secondAtom" label="Second Atom" interface="popover" placeholder="Select" (ionChange)="calculateIonicCharacter()">
+                  <ion-select-option *ngFor="let element of elements" [value]="element.symbol">{{ element.name+" ("+element.symbol+")" }}</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item class="second-item" *ngIf="secondAtom">
+                <ion-label slot="start">X²</ion-label>
+                <ion-label slot="end">{{ getElectronegativity(secondAtom) }}</ion-label>
+              </ion-item>
+            </ion-card>
+          </ion-card>
+      
+          
+        <ion-card class="second-card">
+            <!-- Electronegativity Difference -->
+            <ion-card>
+              <ion-item>
+                <ion-label slot="start">Electronegativity Difference</ion-label>
+                <ion-label slot="end">
+                  {{ isNaNValue(electronegativityDifference) ? 'Error' : firstAtom === ''|| secondAtom === ''? "": electronegativityDifference }}
+                </ion-label>
+              </ion-item>
+            </ion-card>
+              
+            
+        
+            <!-- Percent Ionic Character -->
+            <ion-card>
+              <ion-item>
+                <ion-label slot="start">Percent Ionic Character</ion-label>
+                <ion-label slot="end">
+                  {{ isNaNValue(percentIonicCharacter) ? 'Error' : firstAtom === ''|| secondAtom === ''? "" : percentIonicCharacter + '%' }}
+                </ion-label>
+              </ion-item>
+            </ion-card>
+          </ion-card>
+          <ion-button class="clear button-solid" color="danger" expand="block" (click)="clearInputs()">Clear</ion-button>
+
+        </ion-card-content>
+        
+      </ion-card>
+      <div class="button-container">
+        <ion-button expand="block" (click)="toggleContent()">
+          {{ showContent ? 'Hide Details' : 'About Percent Ionic Calculator' }}
+        </ion-button>
+      </div>
+    </div>
+
+    <div class="description-container" *ngIf="showContent">
+      <ion-card class="ionic-character-card">
+        <!-- Card Header -->
+        <ion-card-header>
+          <ion-card-title>Percent Ionic Character</ion-card-title>
+        </ion-card-header>
+      
+        <!-- Card Content -->
+        <ion-card-content>
+          <!-- Description Section -->
+          <section class="description">
+            <p>
+              The <b>Percent Ionic Character Calculator</b> helps you determine the degree to which a chemical bond between two atoms exhibits ionic characteristics versus covalent characteristics.
+            </p>
+            <p>
+              In chemistry, chemical bonds fall on a spectrum ranging from purely covalent (equal electron sharing) to purely ionic (complete electron transfer). The difference in electronegativity between two bonded atoms is a key factor in determining the bond's ionic character.
+            </p>
+            <p>
+              This calculator:
+            </p>
+            <ul>
+              <li>Allows you to select two chemical elements from a predefined list.</li>
+              <li>Fetches their electronegativity values from standard data.</li>
+              <li>Calculates the electronegativity difference between the two selected elements.</li>
+              <li>Uses the percent ionic character formula to determine the ionic nature of the bond:</li>
+            </ul>
+            <p><b>Formula:</b> % Ionic Character = 100 × (1 − e<sup>−(ΔEN / 2)<sup>2</sup></sup>)</p>
+            <p><b>ΔEN:</b> Electronegativity Difference</p>
+            <p>A higher difference indicates a more ionic bond.</p>
+            <p>If the electronegativity difference is zero, it indicates a purely covalent bond.</p>
+            <p>This tool simplifies complex chemical calculations, providing insights into chemical bonding with precision and clarity.</p>
+          </section>
+        </ion-card-content>
+        <div class="credits">
+          <p>Credits to Davide Borchia</p>
+        </div>
+      </ion-card>
+      
+    </div>
+  </div>
+  
+
+</ion-content>

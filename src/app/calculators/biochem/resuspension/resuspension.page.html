@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Resuspension</ion-title>
+    <ion-buttons slot="end">
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="resuspension-content">
+    <div class="calculator-container">
+      <ion-card class="calculator">
+        <ion-card-header class="calculator-header">
+          <ion-card-title>
+            Resuspension Calculator
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-card class="first-card">
+            <ion-card class="first-card-content">
+              <!-- Oligo Unit Selection -->
+              <ion-item class="label" lines="none">
+                <ion-label>Amount of Oligo</ion-label>
+                <ion-select class="select" slot="end" interface="popover" [(ngModel)]="selectedOligoUnit" (ionChange)="unitChanged($event)">
+                  <ion-select-option *ngFor="let unit of oligoUnits" [value]="unit.symbol">
+                    {{ unit.name }} ({{ unit.symbol}})
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+              <!-- Oligo Input Field -->
+              <ion-item class="input">
+                <ion-input type="number" [(ngModel)]="inputValue" (ionInput)="onOligoInputChange($event)" placeholder="Enter amount"></ion-input>
+              </ion-item>
+            </ion-card>
+          </ion-card>
+          
+  
+          
+          <ion-card class="second-card"> 
+            <ion-card class="second-card-content">
+              <!-- Concentration Unit Selection -->
+              <ion-item lines="none" class="label">
+                <ion-label>Concentration</ion-label>
+                <ion-select slot="end" interface="popover" [(ngModel)]="selectedConcentrationUnit" (ionChange)="unitChanged($event)">
+                  <ion-select-option *ngFor="let unit of concentrationUnits" [value]="unit.symbol">
+                    {{ unit.name }} ({{ unit.symbol}})
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+      
+              <!-- Concentration Input Field -->
+              <ion-item class="input">
+                <ion-input type="number" [(ngModel)]="concentrationValue" (ionInput)="onConcentrationInputChange($event)" placeholder="Enter amount"></ion-input>
+              </ion-item>
+            </ion-card>
+          </ion-card>
+          
+          
+          <ion-card class="third-card">
+            <ion-card class="third-card-content">
+              <!-- Diluent Volume Unit Selection -->
+              <ion-item lines="none" class="label">
+                <ion-label>Diluent Volume Required</ion-label>
+                <ion-select  class="select" slot="end" interface="popover" [(ngModel)]="selectedDiluentUnit" (ionChange)="unitChanged($event)">
+                  <ion-select-option *ngFor="let unit of diluentUnits" [value]="unit.symbol">
+                    {{ unit.name }} ({{ unit.symbol}})
+                  </ion-select-option>
+                  </ion-select>
+                </ion-item>
+  
+                <!-- Diluent Volume Input Field -->
+                <ion-item class="input">
+                  <ion-input type="number" [(ngModel)]="diluentValue" (ionInput)="onDiluentInputChange($event)" placeholder="Enter amount"></ion-input>
+                </ion-item>
+              </ion-card>
+          </ion-card>
+
+          <ion-button class="clear" expand="block" color="danger" (click)="clearFields()">Clear</ion-button>
+
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div class="button-container">
+      <ion-button expand="block" (click)="toggleContent()">
+        {{ showContent ? 'Hide Details' : 'About Resuspension Calculator' }}
+      </ion-button>
+    </div>
+    <div class="description-container" *ngIf="showContent">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Resuspension</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <h3>What is Resuspension?</h3>
+          <p>In a solution, the substances that tend to settle or sediment at the bottom must be mixed or agitated. This process of remixing is called <strong>resuspension</strong>. In chemistry, this solution can be either gas or liquid. This is typically done to redistribute the particles or molecules of the substance evenly throughout the liquid, allowing for more accurate analysis or use.</p>
+          <br>
+          <h3>Common Terms Surrounding Resuspension:</h3>
+          <ul>
+            <li>Primer resuspension</li>
+            <li>Oligo resuspension</li>
+            <li>Cell resuspension</li>
+            <li>Resuspension buffer</li>
+          </ul>
+      
+          <p>This process is often essential in experiments and laboratory procedures where uniform distribution is crucial for accurate results.</p>
+        </ion-card-content>
+        <div class="credits">
+          <p>Credits to Komal Rafay</p>
+        </div>
+      </ion-card>
+      
+    </div>
+  </div>
+</ion-content>

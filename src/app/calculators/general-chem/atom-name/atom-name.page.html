@@ -1,0 +1,202 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Atom Name</ion-title>
+    <ion-buttons slot="end">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <div class="calc-content">
+    <ion-card class="calculator">
+      <ion-card-header class="calculator-header">
+        <ion-card-title>
+          Atom Name Calculator
+        </ion-card-title>
+      </ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" size-md="6">
+            <!-- First Card: Atomic Properties -->
+      <ion-card class="atomic-properties">
+        <ion-card-header>
+          <ion-card-title>Atomic Properties</ion-card-title>
+        </ion-card-header>
+        <ion-card class="atomic-properties-content">
+          <ion-item>
+            <ion-label slot="start">Atomic Number</ion-label>
+            <ion-input
+          type="number"
+          min="1"
+          max="118"
+          [(ngModel)]="atomicNumber"
+          (ngModelChange)="validateAtomicNumber()" placeholder="Enter value">
+        </ion-input>
+            <!-- <ion-icon slot="end" name="flask-outline"></ion-icon> -->
+          </ion-item>
+          <ion-item>
+            <ion-label slot="start">Atomic Mass</ion-label>
+            <ion-input
+            type="number"
+            min="1"
+            [(ngModel)]="atomicMass"
+            (ngModelChange)="calculateComposition()" placeholder="Enter value">
+          </ion-input>
+            <!-- <ion-icon slot="end" name="layers-outline"></ion-icon> -->
+          </ion-item>
+          <ion-item>
+            <ion-label slot="start">Charge</ion-label>
+            <ion-input
+            type="number"
+            [(ngModel)]="charge"
+            (ngModelChange)="calculateComposition()" placeholder="Enter value">
+            </ion-input>
+            <!-- <ion-icon slot="end" name="flash-outline"></ion-icon> -->
+          </ion-item>
+        </ion-card>
+      </ion-card>
+
+      
+          </ion-col>
+          <ion-col size="12" size-md="6">
+            <!-- Second Card: Atomic Composition -->
+            <ion-card class="atomic-composition">
+              <ion-card-header>
+                <ion-card-title>Atomic Composition</ion-card-title>
+              </ion-card-header>
+              <ion-card class="atomic-composition-content">
+                <ion-item>
+                  <ion-label slot="start">Number of Protons</ion-label>
+                  <ion-input
+                  type="number"
+                  [(ngModel)]="protons"
+                  (ngModelChange)="calculateProperties()" placeholder="Enter value">
+                  </ion-input>
+                  <!-- <ion-icon slot="end" name="battery-charging-outline"></ion-icon> -->
+                </ion-item>
+                <ion-item>
+                  <ion-label slot="start">Number of Neutrons</ion-label>
+                  <ion-input
+                  type="number"
+                  [(ngModel)]="neutrons"
+                  (ngModelChange)="calculateProperties()" placeholder="Enter value">
+                  </ion-input>
+                  <!-- <ion-icon slot="end" name="flame-outline"></ion-icon> -->
+                </ion-item>
+                <ion-item>
+                  <ion-label slot="start">Number of Electrons</ion-label>
+                  <ion-input
+                  type="number"
+                  [(ngModel)]="electrons"
+                  (ngModelChange)="calculateProperties()" placeholder="Enter value">
+                  </ion-input>
+                  <!-- <ion-icon slot="end" name="airplane"></ion-icon> -->
+                </ion-item>
+              </ion-card>
+            </ion-card>
+          </ion-col>
+
+          <ion-col size="12" size-md="12">
+            <ion-card class="show-elements">
+              <!-- Toggle Button to Show/Hide Element Details -->
+              <ion-card class="toggle-section">
+                <ion-item>
+                  <ion-label>Show Element Details</ion-label>
+                  <ion-toggle [(ngModel)]="showDetails"></ion-toggle>
+                  <ion-button slot="end" color="danger" (click)="clearAll()">Clear All</ion-button>
+                </ion-item>
+              </ion-card>
+
+                    <!-- Third Card: Additional Details -->
+              <ion-card *ngIf="showDetails" class="details">
+                <ion-item>
+                  <ion-label slot="start">Element Name</ion-label>
+                  <ion-input readonly [(ngModel)]="elementName"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label slot="start">AZE Notation</ion-label>
+                  <ion-input readonly [(ngModel)]="azeNotation"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label slot="start">Total Mass</ion-label>
+                  <ion-input readonly [(ngModel)]="totalMass"></ion-input>
+                </ion-item>
+              </ion-card>
+            </ion-card>
+            
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+    <div class="button-container">
+      <ion-button expand="block" (click)="toggleContent()">
+        {{ showContent ? 'Hide Details' : 'About Atom Name Calculator' }}
+      </ion-button>
+    </div>
+  </div>
+  <div class="description-container" *ngIf="showContent">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Atom Name</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>The atom calculator is a tool for calculating the atomic number and the mass number based on the number of atom components - protons, neutrons, and electrons (or vice versa). In addition, you can define the charge of ions with known numbers of protons and electrons.</p>
+        <br>
+        <h3>What is an atom?</h3>
+
+        <p>A typical atom consists of a nucleus and electron cloud. Atom components are positively-charged protons and electrically neutral neutrons in the nucleus with negatively-charged electrons orbiting this nucleus. Protons and neutrons are called nucleons.</p>
+        <p>Atoms are electrically neutral because they possess an equal number of electrons and protons. However, when an atom has an unequal number of protons and electrons, it has an electrical charge and creates ions.</p>
+        <br>
+        <h3>Equations used to calculate the numbers of protons, neutrons, electrons, atomic mass, and atomic charge</h3>
+        <ul>
+          <li>• If you know the atomic number (Z), atomic mass (A), and charge (z), you can calculate the numbers of protons (p), neutrons (n), and electrons (e) using the given mathematical equations 1-3:
+            <ol>
+              <li>p = Z</li>
+              <li>n = A - Z</li>
+              <li>e = Z - z</li>
+            </ol>
+          </li>
+          <li>• On the other hand, if you know the number of protons (p), neutrons (n), and electrons (e), you can calculate the atomic number (Z), atomic mass (A), and charge (z) using equations 4-6:
+            <ol>
+              <li>Z = p</li>
+              <li>A = p + n</li>
+              <li>z = p – e</li>
+            </ol>
+          </li>
+        </ul>
+    
+        <h3>How to calculate the atomic number, mass and charge</h3>
+        <ol>
+          <li>Choose your element. Let's assume that it is the atom of sodium (Na). The charge is 0.</li>
+          <li>Find the atomic number (Z) and mass number (A). They are equal to 11 and 23, respectively.</li>
+          <li>Calculate numbers of protons, neutrons, and electrons by using mathematical expressions (1-3):
+            <ul>
+              <li>p = 11 (1)</li>
+              <li>n = 23 - 11 = 12 (2)</li>
+              <li>e = 11 - 0 = 11 (3)</li>
+            </ul>
+          </li>
+          <li>Alternatively, you can also calculate the atomic number, atomic mass, and charge.</li>
+          <li>Choose your element. Let's assume that it is the sulfide anion.</li>
+          <li>Find the numbers of protons, neutrons, and electrons. They are equal to 16, 16, and 18, respectively.</li>
+          <li>Calculate atomic number, atomic mass, and charge by using mathematical expressions (4-6):
+            <ul>
+              <li>Z = 16 (4)</li>
+              <li>A = 16 + 16 = 32 (5)</li>
+              <li>z = 16 - 18 = -2 (6)</li>
+            </ul>
+          </li>
+        </ol>
+
+        
+      </ion-card-content>
+      <div class="credits">
+        <p>Credits to Anna Pawlik, PhD candidate</p>
+      </div>
+    </ion-card>    
+  </div>
+</ion-content>

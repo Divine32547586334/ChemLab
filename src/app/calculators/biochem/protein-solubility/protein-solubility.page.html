@@ -1,0 +1,135 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Protein Solubility</ion-title>
+    <ion-buttons slot="end">
+      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="protein-solubility-content">
+    <div class="calculator-container"> 
+      <ion-card class="calculator">
+        <ion-card-header class="calculator-header">
+          <ion-card-title>
+            Protein Solubility Calculator
+          </ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-card class="card-1">
+            <ion-card class="card-1-content">
+              <!-- Blank titer (B) Selection -->
+            <ion-item class="label" lines="none">
+              <ion-label slot="start">Blank titer (B)</ion-label>
+              <ion-input slot="end" type="number" [(ngModel)]="blankTiter" (ionInput)="onInputsChange()" placeholder="Enter amount"></ion-input>
+            </ion-item>
+            </ion-card>
+          </ion-card>
+
+          <ion-card class="card-2">
+            <ion-card class="card-2-content">
+              <ion-item lines="none">
+                <ion-label slot="start">Titer (T)</ion-label>
+                <ion-input slot="end" type="number" [(ngModel)]="titer" (ionInput)="onInputsChange()" placeholder="Enter amount"></ion-input>
+              </ion-item>
+            </ion-card>
+          </ion-card>
+            
+
+          <ion-card class="card-3">
+            <ion-card class="card-3-content">
+              <!-- Normality Unit Selection -->
+              <ion-item class="label" lines="none">
+                <ion-label>Normality of NaOH</ion-label>
+                <ion-select class="select" slot="end" interface="popover" [(ngModel)]="selectedUnit" (ionChange)="onUnitChange($event)">
+                  <ion-select-option *ngFor="let unit of units" [value]="unit.symbol">
+                    {{ unit.name }} ({{ unit.symbol }})
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+  
+              <!-- Input Field -->
+              <ion-item class="input">
+                <ion-input type="number" [(ngModel)]="displayValue" (ionInput)="onInputChange($event)" placeholder="Enter amount">
+                </ion-input>
+              </ion-item>
+            </ion-card>
+          </ion-card>
+          
+
+          <ion-card class="card-4">
+            <ion-card class="card-4-content">
+              <!-- Effective Weight Unit Selection -->
+              <ion-item class="label" lines="none">
+                <ion-label>Effective weight (M)</ion-label>
+                <ion-select class="select" slot="end" interface="popover" [(ngModel)]="selectedWeightUnit" (ionChange)="onWeightUnitChange($event)">
+                  <ion-select-option *ngFor="let unit of weightUnits" [value]="unit.symbol">
+                    {{ unit.name }} ({{ unit.symbol }})
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+  
+              <!-- Effective Weight Input Field -->
+              <ion-item class="input"> 
+                <ion-input
+                  type="number"
+                  [(ngModel)]="weightDisplayValue"
+                  (ionInput)="onWeightInputChange($event)" placeholder="Enter amount">
+                </ion-input>
+              </ion-item>
+            </ion-card>
+          </ion-card>
+  
+          <ion-card class="card-5">
+            <ion-card class="card-5-content">
+              <!-- Protein solubility percentage (P) -->
+          <ion-item lines="none">
+            <ion-label class="label" slot="start">Protein Solubility Percentage (P) :</ion-label>
+            <ion-label class="label2" slot="end">{{ proteinSolubilityPercentage | number: '1.2-2' }}%</ion-label>
+          </ion-item>
+            </ion-card>
+          </ion-card>
+          
+          <ion-button class="clear" expand="block" color="danger" (click)="clearFields()">Clear</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div class="button-container">
+      <ion-button expand="block" (click)="toggleContent()">
+        {{ showContent ? 'Hide Details' : 'About Protein Solubility Calculator' }}
+      </ion-button>
+    </div>
+    <div class="description-container" *ngIf="showContent">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Protein Solubility</ion-card-title>
+          
+        </ion-card-header>
+        <ion-card-content>
+          <p>Our protein solubility calculator is a tool based on the <strong>Kjeldahl method</strong>. The primary purpose of this method is to determine the nitrogen content in different organic and inorganic substances. It also helps estimate the amount of protein present in various food groups.</p>
+          <br>
+          <h3>How to Use the Protein Solubility Calculator</h3>
+          <p>The protein solubility calculator estimates the protein solubility as a percentage based on the following inputs:</p>
+          <ul>
+            <li><strong>Blank Titer:</strong> Titration in the absence of an analyte.</li>
+            <li><strong>Titer:</strong> The standard value for the titration.</li>
+            <li><strong>Normality of NaOH (Sodium Hydroxide):</strong> The concentration of NaOH in grams (you can choose other units).</li>
+            <li><strong>Effective Weight:</strong> The weight of the sample in grams.</li>
+          </ul>
+      
+          <p>Once you input these values, the tool will calculate the protein solubility percentage for you.</p>
+        </ion-card-content>
+        <div class="credits">
+          <p>Credits to Komal Rafay</p>
+          <p>Reviewed by Purnima Singh, PhD and Steven Wooding</p>
+        </div>
+      </ion-card>
+      
+    </div>
+  </div>
+</ion-content>

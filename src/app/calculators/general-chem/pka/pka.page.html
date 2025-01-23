@@ -1,0 +1,185 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>pKₐ</ion-title>
+    <ion-buttons slot="end">
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="pka-content">
+    <div class="calculator-container">
+      <ion-card class="calculator">
+        <ion-card-header class="calculator-header">
+          <ion-card-title>
+            pKₐ Calculator
+          </ion-card-title>
+        </ion-card-header>
+
+        <!-- Ion Segment -->
+        <div class="segment-container">
+          <ion-segment [(ngModel)]="selectedSegment" (ionChange)="onSegmentChanged($event)">
+            <ion-segment-button value="fromph">
+              <ion-label>From pH</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="fromka">
+            <ion-label>From Ka</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+        
+
+    <!-- From pH Content -->
+    <ng-container *ngIf="selectedSegment === 'fromph'">
+      <ion-card class="ph-card-1">
+        <ion-card class="ph-card-1-content">
+          <!-- pH Input -->
+          <ion-item lines="none">
+            <ion-label>pH</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-input type="number" [(ngModel)]="pH" (ionInput)="calculatePKA()" placeholder="Enter value"></ion-input>
+          </ion-item>
+        </ion-card>
+
+        <ion-card class="conjugate-base">
+          <!-- Conjugate Base Concentration with Dropdown -->
+          <ion-item lines="none" class="input-row label">
+            <ion-label class="custom-label">Conjugate base concentration</ion-label>
+            <ion-select [(ngModel)]="selectedUnitConjugate" (ionChange)="updateDisplayValues()" slot="end" interface="popover">
+              <ion-select-option *ngFor="let unit of units" [value]="unit.symbol">
+                {{ unit.name }} ({{ unit.symbol }})
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <!-- Input Field for Conjugate Base -->
+          <ion-item class="input">
+            <ion-input [(ngModel)]="displayConjugateBaseValue" (ionInput)="onConjugateBaseChange($event)" type="number" placeholder="Enter value"></ion-input>
+          </ion-item>
+        </ion-card>
+          
+
+          
+        <ion-card class="weak-acid">
+          <!-- Weak Acid Concentration with Dropdown -->
+          <ion-item lines="none" class="input-row label">
+            <ion-label slot="start" class="custom-label">Weak acid concentration</ion-label>
+            <ion-select slot="end" [(ngModel)]="selectedUnitAcid" (ionChange)="updateDisplayValues()" slot="end" interface="popover">
+              <ion-select-option *ngFor="let unit of units" [value]="unit.symbol">
+                {{ unit.name }} ({{ unit.symbol }})
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <!-- Input Field for Weak Acid -->
+          <ion-item class="input">
+            <ion-input [(ngModel)]="displayWeakAcidValue" (ionInput)="onWeakAcidChange($event)" type="number" placeholder="Enter value"></ion-input>
+          </ion-item>
+        </ion-card>
+          
+        
+      </ion-card>
+
+      <!-- pKa Card -->
+      <ion-card class="ph-card-2">
+        <ion-card class="ph-card-2-content">
+          <ion-item lines="none">
+            <ion-label>pKₐ</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-input [(ngModel)]="pKa_frompH" type="number" readonly placeholder="Generated pKₐ value"></ion-input>
+          </ion-item>
+        </ion-card>
+      </ion-card>
+
+      <ion-button class="clear" expand="block" color="danger" (click)="clearFields()">Clear</ion-button>
+    </ng-container>
+
+        <!-- From Ka Content -->
+    <ng-container *ngIf="selectedSegment === 'fromka'">
+      <ion-card class="ka-card-1">
+        <ion-card class="ka-card-1-content">
+          <!-- Ka Input -->
+          <ion-item lines="none">
+            <ion-label>Ka</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-input type="number" [(ngModel)]="Ka" (ionInput)="calculatePKA()" placeholder="Enter Ka value"></ion-input>
+          </ion-item>
+        </ion-card>
+      </ion-card>
+
+      <!-- pKa Card -->
+      <ion-card class="ka-card-2">
+        <ion-card class="ka-card-2-content">
+          <ion-item lines="none">
+            <ion-label>pKₐ</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-input [(ngModel)]="pKa_fromKa" type="number" readonly placeholder="Generated pKₐ value"></ion-input>
+          </ion-item>
+        </ion-card>
+      </ion-card>
+
+      <ion-button class="clear" expand="block" color="danger" (click)="clearFields()">Clear</ion-button>
+    </ng-container>
+      </ion-card>
+    </div>
+    <div class="button-container">
+      <ion-button expand="block" (click)="toggleContent()">
+        {{ showContent ? 'Hide Details' : 'About pKₐ Calculator' }}
+      </ion-button>
+    </div>
+    <div class="description-container" *ngIf="showContent">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>pKₐ</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <h3>What is pKa?</h3>
+          <p>The pKa determines how weak or strong an acid is. To be more precise, pKa tells you how strongly the Brønsted acid holds onto a given proton (H+). It allows you to predict how each acid and base solution will react in a specific experimental setting.</p>
+          <br>
+          <h3>Interpretation of pKa</h3>
+          <p>The lower the pKa, the stronger the acid. This means:</p>
+          <ul>
+            <li>The H+ is held more loosely by the acid.</li>
+            <li>The acid can give up on H+ more easily.</li>
+          </ul>
+          <p>The higher the pKa, the weaker the acid. This means:</p>
+          <ul>
+            <li>The H+ is held more tightly by the acid.</li>
+            <li>The acid does not easily donate a H+.</li>
+          </ul>
+      
+          <h3>pKa and pH — How to Calculate pKa from pH?</h3>
+          <p>The pKa calculator is based on the well-known Henderson-Hasselbalch equation, which provides the relationship between pH and pKa:</p>
+          <pre>pH = pKa + log10 [A−] / [HA]</pre>
+          <p>Where:</p>
+          <ul>
+            <li>A−: Molar concentration of the conjugate base.</li>
+            <li>HA: Molar concentration of the weak acid.</li>
+          </ul>
+      
+          <h3>pKa and Ka — How to Calculate pKa from Ka?</h3>
+          <p>Ka is a constant value measured at equilibrium, indicating how acids dissociate in a solution. The higher Ka values, the stronger the acid and the easier the dissociation (H+ donating) from the other components.</p>
+      
+          <h4>Relationship of pKa and Ka</h4>
+          <p>pKa is negatively correlated to Ka, meaning that if one value increases, the other value decreases. In mathematical terms:</p>
+          <pre>pKa = −log10[Ka]</pre>
+          <p>If you want to calculate an unknown Ka from pKa, you can rearrange the equation as:</p>
+          <pre>Ka = 10^−pKa</pre>
+        </ion-card-content>
+        <div class="credits">
+          <p>Credits to Rangsimatiti Binda Saichompoo</p>
+        </div>
+      </ion-card>
+      
+      
+    </div>
+  </div>
+</ion-content>

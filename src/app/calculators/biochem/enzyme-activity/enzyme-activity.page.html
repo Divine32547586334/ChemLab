@@ -1,0 +1,170 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Enzyme Activity</ion-title>
+    <ion-buttons slot="end">
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="enzyme-activity-content">
+    <div class="calculator-container">
+      <ion-card class="calculator">
+        <ion-card-header class="calculator-header">
+          <ion-card-title>
+            Enzyme Activity Calculator
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <!-- Desired Enzyme Activity -->
+          <ion-card class="first-card">
+            <ion-card class="first-card-content">
+              <ion-item class="label" lines="none">
+                <ion-label>Desired Enzyme Activity Unit</ion-label>
+                <ion-select
+                  class="select"
+                  slot="end"
+                  interface="popover"
+                  [(ngModel)]="selectedUnit"
+                  (ionChange)="updateDisplayedInput()">
+                  <ion-select-option *ngFor="let unit of volumeUnits" [value]="unit.value" placeholder="Enter amount" >
+                    {{ unit.label }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item class="input">
+                <ion-input
+                  type="number"
+                  [value]="displayedInput"
+                  (ionInput)="recalculateFromDesiredEnzymeActivity($event.target.value)" placeholder="Enter amount">
+                </ion-input>
+              </ion-item>
+            </ion-card>
+          </ion-card>
+
+          <!-- Stock Enzyme Activity -->
+          <ion-card class="second-card">
+            <ion-card class="second-card-content">
+              <ion-item class="label" lines="none">
+                <ion-label>Stock Enzyme Activity Unit</ion-label>
+                <ion-select
+                  class="select"
+                  slot="end"
+                  interface="popover"
+                  [(ngModel)]="selectedMassUnit"
+                  (ionChange)="updateDisplayedMassInput()">
+                  <ion-select-option *ngFor="let unit of massUnits" [value]="unit.value"  placeholder="Enter amount">
+                    {{ unit.label }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item class="input">
+                <ion-input
+                  type="number"
+                  [value]="displayedMassInput"
+                  (ionInput)="recalculateFromStockEnzymeActivity($event.target.value)"  placeholder="Enter amount">
+                </ion-input>
+              </ion-item>
+            </ion-card>
+          </ion-card>
+
+          <!-- Desired Final Volume -->
+          <ion-card class="third-card">
+            <ion-card class="third-card-content">
+              <ion-item class="label" lines="none">
+                <ion-label>Desired Final Volume Unit</ion-label>
+                <ion-select
+                  class="select"
+                  slot="end"
+                  interface="popover"
+                  [(ngModel)]="selectedFinalVolumeUnit"
+                  (ionChange)="updateDisplayedFinalVolumeInput()">
+                  <ion-select-option *ngFor="let unit of volumeUnits" [value]="unit.value"  placeholder="Enter amount">
+                    {{ unit.label }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item class="input">
+                <ion-input
+                  type="number"
+                  [value]="displayedFinalVolumeInput"
+                  (ionInput)="recalculateFromDesiredFinalVolume($event.target.value)"  placeholder="Enter amount">
+                </ion-input>
+              </ion-item>
+            </ion-card>
+          </ion-card>
+
+          <!-- Enzyme Mass -->
+          <ion-card class="fourth-card">
+            <ion-card class="fourth-card-content">
+              <ion-item class="label" lines="none">
+                <ion-label>Enzyme Mass Unit</ion-label>
+                <ion-select
+                  class="select"
+                  slot="end"
+                  interface="popover"
+                  [(ngModel)]="selectedEnzymeMassUnit"
+                  (ionChange)="updateDisplayedEnzymeMassInput()">
+                  <ion-select-option *ngFor="let unit of massUnits" [value]="unit.value" >
+                    {{ unit.label }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item class="input">
+                <ion-input
+                  type="number"
+                  [value]="displayedEnzymeMassInput"
+                  (ionChange)="recalculateFromEnzymeMass($event.target.value)"
+                  readonly  placeholder="Generated value">
+                </ion-input>
+              </ion-item>
+            </ion-card>
+          </ion-card>
+
+          <!-- Clear Button -->
+          <ion-button  expand="block" color="danger" (click)="clearAllInputs()">Clear</ion-button>
+      
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div class="button-container">
+      <ion-button expand="block" (click)="toggleContent()">
+        {{ showContent ? 'Hide Details' : 'About pKₐ Calculator' }}
+      </ion-button>
+    </div>
+    <div class="description-container" *ngIf="showContent">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Enzyme Activity</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p><strong>Enzyme activity</strong> is the catalytic efficiency of an enzyme. It allows us to measure the rate at which an enzyme converts the substrate into a product. It is a critical metric in biochemistry. Its most significant usage is determining the amount of enzyme needed for a desired activity per unit volume of buffer solution, which is what our tool stands for.</p>
+          <br>
+          <h3>Significance of determining enzyme activity</h3>
+          <p>Knowing the enzyme activity helps you understand the effectiveness of the enzyme in catalyzing the substrate. And the measurements could come in handy in many ways:</p>
+          <ul>
+            <li><strong>Insight into biochemical reactions:</strong> Calculating enzyme activity gives an idea of the efficiency and functionality of enzymes within biological systems.</li>
+            <li><strong>Applications in medicine:</strong> Enzyme activity measurements are essential in medical diagnostics and treatment. They assist in diagnosing diseases, monitoring treatment responses, and assessing the effectiveness of therapeutic interventions.</li>
+            <li><strong>Optimization in industry:</strong> In industrial environments, enzyme activity assays are crucial for optimizing manufacturing processes. They enable precise control over enzymatic reactions.</li>
+            <li><strong>Driving innovation and progress:</strong> Understanding enzyme activity assists innovation across diverse fields like biotechnology, medicine, and more. Using enzyme kinetics, enzyme activity measurements significantly contribute to research, healthcare, and industrial applications.</li>
+          </ul>
+        </ion-card-content>
+        <div class="credits">
+          <p>Credits to Komal Rafay</p>
+          <p class="reviewed">Reviewed by Mariamy Chrdileli and Steven Wooding</p>
+        </div>
+      </ion-card>
+      
+    </div>
+    
+  </div>
+</ion-content>

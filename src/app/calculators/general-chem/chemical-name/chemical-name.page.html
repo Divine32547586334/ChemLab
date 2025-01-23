@@ -1,0 +1,162 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Chemical Name</ion-title>
+    <ion-buttons slot="end">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="chemical-name-content">
+    <div class="calculator-container">
+      <ion-card class="calculator">
+        <ion-card-header class="calculator-header">
+          <ion-card-title>
+            Chemical Name Calculator
+          </ion-card-title>
+        </ion-card-header>
+  
+        <!-- Ion Segment -->
+        <div class="segment-container">
+            <ion-segment [(ngModel)]="selectedSegment" (ionChange)="onSegmentChanged($event)">
+              <ion-segment-button value="name">
+                <ion-label>Name</ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="formula">
+                <ion-label>Formula</ion-label>
+              </ion-segment-button>
+            </ion-segment>
+        </div>
+        
+      
+  
+      <!-- Name Content -->
+      
+        <ng-container *ngIf="selectedSegment === 'name'">
+          <ion-card class="name-card-1">
+            <ion-card class="name-card-1-content">
+              <ion-card class="cation-name-dropdown">
+                <!-- Cation Name Dropdown -->
+                <ion-item>
+                  <ion-label slot="start">Cation Name</ion-label>
+                  <ion-select slot="end" [(ngModel)]="selectedCationName" interface="popover" placeholder="Select" (ionChange)="generateCompound()">
+                    <ion-select-option *ngFor="let cation of cationSymbols" [value]="cation.name">{{ cation.name }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-card>
+              <ion-card class="anion-name-dropdown">
+                <!-- Anion Name Dropdown -->
+                  <ion-item>
+                    <ion-label slot="start">Anion Name</ion-label>
+                    <ion-select slot="end" [(ngModel)]="selectedAnionName" interface="popover" placeholder="Select" (ionChange)="generateCompound()">
+                        <ion-select-option *ngFor="let anion of anionSymbols" [value]="anion.name">{{ anion.name }}</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-card>
+              </ion-card>
+            </ion-card>
+          <!-- Compound Info Card Inside Segment -->
+          <ion-card class="name-card-2">
+            <ion-card-header>
+              <ion-card-title>Compond Details</ion-card-title>
+            </ion-card-header>
+            <ion-card class="name-card-2-content">
+              <ion-item>
+                <ion-label slot="start">Name</ion-label>
+                <ion-label slot="end">{{ compoundName }}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label slot="start">Formula</ion-label>
+                <ion-label slot="end">{{ compoundFormula }}</ion-label>
+              </ion-item>
+            </ion-card>
+          </ion-card>
+
+          <ion-button expand="block" color="danger" (click)="clearInputs()">Clear</ion-button>
+        </ng-container>
+      
+      
+  
+      <!-- Formula Content -->
+      <ng-container *ngIf="selectedSegment === 'formula'">
+        <ion-card class="formula-card-1">
+          <ion-card class="formula-card-1-content">
+              <ion-card class="cation-formula-dropdown">
+                <!-- Cation Formula Dropdown -->
+                <ion-item>
+                  <ion-label slot="start">Cation Formula</ion-label>
+                  <ion-select slot="end" [(ngModel)]="selectedCationSymbol" interface="popover" placeholder="Select" (ionChange)="generateCompound()">
+                    <ion-select-option *ngFor="let cation of cationSymbols" [value]="cation.symbol">{{ cation.symbol }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-card>
+              
+              <ion-card class="anion-formula-dropdown">
+                <!-- Anion Formula Dropdown -->
+                <ion-item>
+                  <ion-label slot="start">Anion Formula</ion-label>
+                    <ion-select slot="end" [(ngModel)]="selectedAnionSymbol" interface="popover" placeholder="Select" (ionChange)="generateCompound()">
+                      <ion-select-option *ngFor="let anion of anionSymbols" [value]="anion.symbol">{{ anion.symbol }}</ion-select-option>
+                    </ion-select>
+                </ion-item>
+              </ion-card>
+          </ion-card>
+        </ion-card>
+          
+        <!-- Compound Info Card Inside Segment -->
+        <ion-card class="formula-card-2">
+          <ion-card-header>
+            <ion-card-title>Compond Details</ion-card-title>
+          </ion-card-header>
+          <ion-card class="formula-card-2-content">
+            <ion-item>
+              <ion-label slot="start">Name</ion-label>
+              <ion-label slot="end">{{ compoundName }}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label slot="start">Formula</ion-label>
+              <ion-label slot="end">{{ compoundFormula }}</ion-label>
+            </ion-item>
+          </ion-card>
+        </ion-card>
+        <ion-button expand="block" color="danger" (click)="clearInputs()">Clear</ion-button>
+      </ng-container>
+      </ion-card>
+    </div>
+
+    <div class="button-container">
+      <ion-button expand="block" (click)="toggleContent()">
+        {{ showContent ? 'Hide Details' : 'About Chemical Name Calculator' }}
+      </ion-button>
+    </div>
+    <div class="description-container" *ngIf="showContent">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Chemical Name</ion-card-title>
+
+        </ion-card-header>
+        <ion-card-content>
+          <h3>Chemical Name Calculator</h3>
+          <p>If you're proficient in using formulae to represent chemical compounds but are not so confident in translating them into scientific names, our chemical name calculator may be just right for you. Here you will find the names and formulas of ionic compounds without having to memorize the terminology (or, at least, all of it).</p>
+          <br>
+          <h3>Names and Formulas for Ionic Compounds</h3>
+          <p>The chemical name definition is obvious, but knowing how to name chemical compounds in practice can be tricky, especially if we combine polyatomic ions. There are three main rules to remember:</p>
+          <ol>
+            <li><strong>Cation goes first</strong>, and you use the name of the element without any changes. For example, Ca remains calcium, and NH₄ is still ammonium.</li>
+            <li><strong>Anion name comes second</strong>, and the suffix may need to change. If it's a single atom, use the elemental name and replace the ending with "-ide". For example, Cl becomes chloride. For polyatomic ions, you don't need to change anything.</li>
+            <li><strong>Roman numeral usage</strong>: These indicate the oxidation number of the atom, especially for transition metals that can take on multiple charges. The Roman numeral follows the element's name. For example, MnBr₂ is manganese(II) bromide, as Mn has a 2+ charge. MnBr₃ would be manganese(III) bromide due to the different charge.</li>
+          </ol>
+        </ion-card-content>
+        <div class="credits">
+          <p>Credits to Michael Darcy</p>
+        </div>
+      </ion-card>
+      
+    </div>
+    
+    
+  </div>
+</ion-content>

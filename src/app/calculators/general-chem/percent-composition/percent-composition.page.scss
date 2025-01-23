@@ -1,0 +1,219 @@
+//all pages
+h1, h2, h3, h4, h5, h6, p{
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+ion-content {
+    --background: linear-gradient(135deg, #152639, #213A57);
+    --padding-bottom: 20px;
+}
+
+ion-header {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 1000;
+    ion-toolbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        --padding-top: 20px;
+        --padding-bottom: 10px;
+        --background: linear-gradient(135deg, #152639, #213A57);
+        padding: 0 20px;
+        color: aliceblue;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bottom shadow */
+        height: 70px;
+    }
+    
+    ion-menu-button {
+        --color: aliceblue; /* Change the color to red */
+    }
+
+    ion-title{
+        font-size: 20px;
+        font-weight: 500;
+        cursor: default;
+    }
+
+    ion-icon{
+        width: 25px;
+        height: 25px;
+        padding: 6px 6px;
+        border-radius: 100%;
+    }
+    ion-icon:hover{
+        background-color: rgba(255, 255, 255, 0.08);
+        color: #0AD1C8;
+    }
+}
+// end of css for all pages
+.percent-composition-content{
+    margin-top: 90px;
+}
+.calculator{
+    margin: 20px;
+    background-color: #152639;
+    box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.15); /* X, Y, Blur, Spread, Opacity */
+    border: 4px solid rgba(10, 149, 209, 0.4);
+    padding: 15px;
+    padding-top: 30px;
+    padding-bottom: 20px ;
+}
+.calculator-header{
+    text-align: center;
+    padding-bottom: 10px;
+}
+.calculator-header ion-card-title{
+    
+    color: #0AD1C8;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+.element-card{
+    background: #213A57;
+
+    .element-card-content{
+        margin: 15px;
+        background: transparent;
+        box-shadow: none;
+        color: #152639;
+    }
+    .element-card-content ion-item{
+        color: #152639;
+        --background: #0AD1C8;
+        --inner-border-width: 0px 0px 0px 0px;
+    }
+    .element-card-content .input{
+        --background:  #5ae6df;
+    }
+}
+//For the ion-select decrement and increment icon
+:host ::ng-deep ion-select::part(icon) {
+    color: #152639;
+}
+:host ::ng-deep ion-select {
+    --placeholder-opacity: 1; /* Placeholder opacity */
+}
+
+.chart-card{
+    background: #213A57;
+    text-align: center;
+
+    ion-card-header ion-card-title{
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: #0AD1C8;
+    }
+    .chart-card-content{
+        font-size: 1rem;
+        margin: 0 15px;
+        padding: 15px;
+        padding-top: 5px;
+        margin-bottom: 15px;
+        background: #5ae6df;
+        box-shadow: none;
+        text-align: left;
+    }
+    .chart-rows, .chart-elements{
+        color: #152639;;
+    }
+
+}
+
+//Molecular weight
+.molecular{
+    background: #213A57;
+    text-align: center;
+    .molecular-content{
+        margin: 15px;
+        background: transparent;
+        box-shadow: none;
+        color: #152639;
+    }
+    .molecular-content ion-item{
+        color: #152639;
+        --background: #0AD1C8;
+        --inner-border-width: 0px 0px 0px 0px;
+    }
+    .molecular-content ion-item ion-input{
+        text-align: right;
+        padding-right: 10px;
+    }
+}
+ion-button{
+    margin: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ion-button{
+        margin-top: 50px;
+        max-width: 500px;
+        --background: transparent;
+        border: 2px solid #0AD1C8;
+        border-radius: 5px;
+        color: #0AD1C8;
+        font-weight: 500;
+    }
+}
+.description-container{
+    margin-top: 10px;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ion-card-header ion-card-title{
+        color: #152639;
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+    ion-card-content{
+        margin: 20px;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 10px;  
+    }
+    ion-card {
+        background-color: #5ae6df;
+        color: #152639;      
+        
+    
+    }
+    ion-card .credits{
+        margin-top: 30px;
+        margin-bottom: 30px;
+        text-align: center;
+        p{
+            font-size: 0.9rem;
+        }
+    }
+      ion-card-header{
+        margin-top: 20px;
+      }
+      ion-card-title {
+        font-size: 1rem;
+        text-align: center;
+        color: #152639;      }
+      
+      ion-card-content p {
+        font-size: 1rem;
+        color: #152639;      }
+      
+      ion-card-content h3 {
+        font-size: large;
+        font-weight: 500;
+        color: #152639;      }
+      
+      ion-card-content ul {
+        color: #152639;      }
+      
+      ion-card-content ol {
+        color: #152639;      }
+      
+}
+

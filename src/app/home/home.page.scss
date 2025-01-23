@@ -1,0 +1,227 @@
+h1, h2, h3, h4, h5, h6, p{
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+ion-content {
+    --background: linear-gradient(135deg, #152639, #213A57);
+    --padding-bottom: 20px;
+}
+
+ion-header {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 1000;
+    ion-toolbar{
+        display: flex;
+        justify-content: space-between;
+        --padding-top: 20px;
+        --padding-bottom: 10px;
+        --background: linear-gradient(135deg, #152639, #213A57);
+        padding: 0 20px;
+        color: aliceblue;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bottom shadow */
+        height: 70px;
+    }
+    
+    ion-menu-button {
+        --color: aliceblue; /* Change the color to red */
+    }
+
+    ion-title{
+        font-size: 20px;
+        font-weight: 500;
+        cursor: default;
+    }
+
+    ion-icon{
+        width: 25px;
+        height: 25px;
+        padding: 6px 6px;
+        border-radius: 100%;
+        
+    }
+    ion-icon:hover{
+        background-color: rgba(255, 255, 255, 0.08);
+        color: #0AD1C8;
+    }
+}
+// Calculate your CHemistry Banner Section
+.banner-text {
+    cursor: default;
+    margin-top: 120px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.banner-text h4,
+.banner-text p{
+    color: aliceblue;
+    padding: 4px 0;
+}
+.banner-text p{
+    font-size: calc(0.75rem + 0.2vw);
+}
+
+//Chemistry, Biochemistry Button Section
+.segment {
+    margin-top: 20px;
+    display: flex; /* Enable flexbox */
+    flex-direction: column;
+    justify-content: center; /* Horizontally center content */
+    align-items: center; /* Vertically center content (if there’s height) */
+    padding: 10px;
+}
+
+ion-segment {
+    width: 90% !important; /* Set the width */
+    max-width: 400px; /* Optional: Restrict maximum width */
+    margin-bottom: 20px;
+    border: 2px solid rgba(217, 217, 217, 0.15);
+    border-radius: 5px;
+}
+
+ion-segment-button {
+    min-width: 10px !important;
+    min-height: 28px !important;
+    margin: 6px;
+    padding: 2px;
+    text-align: center; /* Ensure text is centered */
+    --color: aliceblue;
+    --color-checked: #213A57;
+    --indicator-color: #0AD1C8;
+    font-weight: 700;
+    border-radius: 30px;
+}
+ion-segment-button::part(indicator-background) {
+    border-radius: 5px;
+}
+ion-segment-view{
+    width: 90%;
+}
+ion-segment-content{
+    justify-content: center;
+}
+
+
+//Chemistry, Biochemistry Button Section
+//desktop customization
+ion-label{
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+
+}
+ion-segment.md{
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+ion-segment-button.md{
+    font-size: 0.9rem;
+    --color: aliceblue;
+    padding: 0;
+    margin: 0;
+    height: 34px;
+    --indicator-height: 34px; /* Adjust the height of the indicator */
+    --indicator-color: #0AD1C8; /* Set your desired indicator color */
+    text-transform: capitalize;
+}
+ion-segment-content{
+    justify-content: center;
+}
+//Cards Section
+ion-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    max-width: 400px;
+    max-height: 105px;
+    min-width: 288.76px;
+    min-height: 105px;
+    height: 400px;
+    height: auto;
+    background: linear-gradient(135deg, #1f3551, #213A57);
+    color: #D9D9D9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Drop shadow */
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out; /* Added transform */
+    cursor: pointer;
+    overflow: hidden; /* Ensures the overlay stays within bounds */
+    position: relative; /* Required for overlay positioning */
+    ion-icon {
+        margin: 10px;
+        min-width: 50px;
+        min-height: 50px;
+        padding: 15px;
+        
+    } 
+    ion-card-title{
+        color: #D9D9D9;
+    }
+    p {
+        color: #D9D9D9;
+    }
+}
+/* Overlay Effect */
+ion-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.084);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1;
+}
+
+ion-card:hover {
+    transform: scale(1.05); /* Zoom-in effect */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+
+
+
+    cursor: pointer;
+}
+
+ion-card:hover::before {
+    opacity: 1; /* Overlay appears */
+}
+//end
+
+ion-card-content{
+    margin: 15px 0;
+    margin-right: 10px;
+    padding: 5px;
+
+        ion-card-title{
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        p{
+            font-size: 0.78rem;
+        }
+}
+/* Ensure the row aligns and wraps content correctly */
+ion-row {
+    justify-content: center; /* Centers columns horizontally */
+    align-items: center; /* Centers columns vertically */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+  /* Ensure ion-col behaves as expected */
+ion-col {
+    display: flex; /* Ensures it uses flexbox */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    max-width: 100%; /* Full width by default */
+}
+

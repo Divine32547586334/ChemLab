@@ -1,0 +1,270 @@
+ion-menu {
+  --border: 1px solid  rgba(255, 255, 255, 0.17);
+  --ion-toolbar-border-color:  rgba(255, 255, 255, 0.17); /* If toolbar has a border */
+}
+ion-menu ion-content {
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.17); /* Set the left border color */
+}
+//ChemLab Logo
+ion-list-header
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ion-list-header .left-section{
+  padding: 6px;
+}
+.left-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer; /* Add a pointer cursor on hover */
+  /* Initial styles for the icon and text */
+  ion-icon {
+    width: 60px;
+    height: 60px;
+    transition: color 0.3s ease; /* Smooth transition */
+  }
+
+  h1 {
+    font-size: 1.9rem;
+    margin-left: 8px; /* Space between the icon and the text */
+    color: aliceblue; /* Initial text color */
+    transition: color 0.3s ease; /* Smooth transition */
+  }
+
+  &:hover {
+    /* Change color on hover */
+    ion-icon {
+      color: #0ad1c8; /* Change icon color */
+    }
+
+    h1 {
+      color: #0ad1c8; /* Change text color */
+    }
+  }
+}
+//Accordion Container
+ion-menu ion-list#inbox-list {
+  // border-bottom: 1px solid var(--ion-background-color-step-150, #d7d8da);
+  padding: 6px 0;
+  background: transparent;
+}
+//General Chemistry and Biochemistry
+ion-accordion{
+  background: transparent;
+}
+//Accordion Header
+ion-accordion ion-item{
+  --min-height: 48px;
+  --background: var(--ion-item-background, var(--ion-background-color, #fff));
+  --background-activated: rgb(255, 255, 255);
+  --background-focused: rgb(255, 255, 255);
+  --background-hover: rgb(255, 255, 255);
+  --background-activated-opacity: 0;
+  --background-focused-opacity: .12;
+  --background-hover-opacity: .04;
+  --border-color: var(--ion-item-border-color, var(--ion-border-color, var(--ion-color-step-150, var(--ion-background-color-step-150, rgba(255, 255, 255, 0.13)))));
+  --color: var(--ion-item-color, var(--ion-text-color, #ffffff));
+  --transition: opacity 15ms linear, background-color 15ms linear;
+  --padding-start: 16px;
+  --inner-padding-end: 16px;
+  --inner-border-width: 0 0 1px 0;
+  --border-width: 0px;      /* Disables outer border */
+  font-size: 1.1rem;
+  font-weight: normal;
+  text-transform: none;
+
+}
+ion-menu-toggle ion-item:hover ion-label{
+  color: #0AD1C8;
+}
+ion-menu-toggle ion-item:hover ion-icon{
+  color: #0AD1C8;
+}
+ion-menu-toggle ion-item.selected{
+  background: rgba(10, 209, 200, 0.08);
+  color: #0AD1C8;
+}
+
+
+// ion-accordion.accordion-expanded ion-item[slot="header"] {
+//   color: #0AD1C8;
+// }
+
+// ion-accordion.accordion-expanding ion-item[slot="header"] {
+//   color:#0AD1C8;
+// }
+//Accordion Content
+ion-menu ion-item {
+  --background: transparent;
+  --padding-start: 30px; //edited
+  --padding-end: 5px;
+  border-radius: 4px;
+  color: aliceblue;
+}
+ion-menu ion-item.selected {
+  --background: rgba(#0AD1C8, 0.14);
+  color: #0AD1C8;
+}
+ion-menu ion-item.selected ion-icon {
+  color:#0AD1C8;
+}
+ion-menu ion-item ion-icon {
+  color: #0AD1C8;
+}
+ion-menu ion-item ion-label {
+  font-weight: 500;
+}
+
+//Di ko alam kung para saan hahahahhaa
+//For ios ata to nung una
+// ion-menu ion-content {
+//   --padding-bottom: 20px;
+// }
+
+// ion-menu ion-list {
+//   padding: 20px 0 0 0;
+// }
+
+// ion-menu ion-note {
+//   line-height: 24px;
+//   margin-bottom: 20px;
+// }
+
+// ion-menu ion-item {
+//   --padding-start: 16px;
+//   --padding-end: 16px;
+//   --min-height: 50px;
+// }
+
+// ion-menu ion-item.selected ion-icon {
+//   color: var(--ion-color-primary);
+// }
+// ion-menu ion-item ion-icon {
+//   font-size: 24px;
+//   color: #73849a;
+// }
+
+// ion-menu ion-list#labels-list ion-list-header {
+//   margin-bottom: 8px;
+// }
+
+// ion-menu ion-list-header,
+// ion-menu ion-note {
+//   padding-left: 16px;
+//   padding-right: 16px;
+// }
+
+// ion-menu ion-note {
+//   margin-bottom: 8px;
+// }
+
+// ion-note {
+//   display: inline-block;
+//   font-size: 16px;
+
+//   color: var(--ion-color-medium-shade);
+// }
+
+// ion-item.selected {
+//   --color: var(--ion-color-primary);
+// }
+
+
+//for host
+h1, h2, h3, h4, h5, h6{
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+
+//Start of CSS Customization
+
+/* Hide scrollbar across different browsers */
+/* Prevent scrolling in ion-menu */
+ion-menu {
+  --overflow: hidden; /* Disable overflow */
+  overflow: hidden !important; /* Ensures no scrollbar appears */
+}
+
+/* Prevent scrolling in ion-content inside the menu */
+ion-menu ion-content {
+  --overflow: hidden; /* Disable overflow inside ion-content */
+  overflow: hidden !important; /* Ensures no scrollbar */
+}
+
+/* Prevent any overflow in the main content area */
+#main-content {
+  overflow: hidden !important; /* Disables any scrolling in main content */
+}
+
+ion-menu ion-content {
+  --background: linear-gradient(135deg, #152639, #213A57);
+}
+
+//SideBar Menu Header
+.menu-header {
+  display: flex;
+  align-items: center; /* Vertically center the items */
+  justify-content: space-between; /* Push left and right sections apart */
+  margin-top: 18px;
+  padding-left: 10px !important;
+  padding-bottom: 14px;
+  border-bottom: 1px solid  rgba(255, 255, 255, 0.17);
+  color: #fff;
+  cursor: pointer;
+}
+
+.left-section {
+  display: flex;
+  align-items: center; /* Vertically align the icon and text */
+
+}
+
+.menu-header-logo {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    color: white;
+}
+.chevron-icon {
+  margin-left: auto; /* Ensure it stays on the far right */
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  padding: 5px;
+}
+// ion-list-header{
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   margin-top: 24px;
+//   padding-left: 10px !important;
+//   padding-bottom: 6px;
+//   border-bottom: 1px solid  rgba(255, 255, 255, 0.17);
+//   color: #fff;
+
+//   .menu-header-logo{
+//     width: 32px;
+//     height: 32px;
+//     margin-right: 12px;
+//     color: white;
+//   }
+  
+//   ion-label{
+//     color: white;
+//     margin-bottom: 0;
+//   }
+//   chevron-back-outline{
+//     width: 1.6em;
+//     height: 1.6em;
+//   }
+// }
+
+

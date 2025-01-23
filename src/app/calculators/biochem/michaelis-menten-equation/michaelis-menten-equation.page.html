@@ -1,0 +1,176 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Michaelis-Menten Equation</ion-title>
+    <ion-buttons slot="end">
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="mme-content">
+    <div class="calculator-container">
+      <ion-card class="calculator">
+        <ion-card-header class="calculator-header">
+          <ion-card-title>
+            Michaelis-Menten Equation Calculator
+          </ion-card-title>
+        </ion-card-header>
+
+          <!-- Normality Unit -->
+          <ion-card class="card-1">
+            <ion-card class="card-1-content">
+              <ion-item class="label" lines="none">
+                <ion-label>Normality Unit</ion-label>
+                <ion-select
+                  class="select"
+                  slot="end"
+                  interface="popover"
+                  [(ngModel)]="selectedUnit"
+                  (ionChange)="updateDisplayedInput()">
+                  <ion-select-option *ngFor="let unit of units" [value]="unit.symbol" >
+                    {{ unit.name }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item class="input">
+                <ion-input
+                  type="number"
+                  [value]="displayedInput"
+                  (ionInput)="onInputChangeForNormality($event.target.value)" placeholder="Enter value">
+                </ion-input>
+              </ion-item>
+            </ion-card>
+          </ion-card>
+
+          <!-- Vmax Unit -->
+          <ion-card class="card-2">
+            <ion-card class="card-2-content">
+              <ion-item class="label" lines="none">
+                <ion-label>Vmax Unit</ion-label>
+                <ion-select
+                  class="select"
+                  slot="end"
+                  interface="popover"
+                  [(ngModel)]="selectedVmaxUnit"
+                  (ionChange)="updateDisplayedVmaxInput()">
+                  <ion-select-option *ngFor="let unit of vmaxUnits" [value]="unit.symbol">
+                    {{ unit.name }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item class="input">
+                <ion-input
+                  type="number"
+                  [value]="displayedVmaxInput"
+                  (ionInput)="onInputChangeForVmax($event.target.value)" placeholder="Enter value">
+                </ion-input>
+              </ion-item>
+            </ion-card>
+          </ion-card>
+
+        <!-- Substrate Concentration Unit -->
+        <ion-card class="card-3">
+          <ion-card class="card-3-content">
+            <ion-item class="label" lines="none">
+              <ion-label>Substrate Concentration Unit</ion-label>
+              <ion-select
+                class="select"
+                slot="end"
+                interface="popover"
+                [(ngModel)]="selectedSUnit"
+                (ionChange)="updateDisplayedSInput()">
+                <ion-select-option *ngFor="let unit of units" [value]="unit.symbol">
+                  {{ unit.name }}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item class="input">
+              <ion-input
+                type="number"
+                [value]="displayedSInput"
+                (ionInput)="onInputChangeForSubstrate($event.target.value)" placeholder="Enter value">
+              </ion-input>
+            </ion-item>
+          </ion-card>
+        </ion-card>
+
+        <!-- Reaction Rate Unit -->
+        <ion-card class="card-4">
+          <ion-card class="card-4-content">
+            <ion-item class="label" lines="none">
+              <ion-label>Reaction Rate Unit</ion-label>
+              <ion-select
+                class="select"
+                slot="end"
+                interface="popover"
+                [(ngModel)]="selectedVUnit"
+                (ionChange)="updateDisplayedVInput()">
+                <ion-select-option *ngFor="let unit of vUnits" [value]="unit.symbol">
+                  {{ unit.name }}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item class="input">
+              <ion-input
+                type="number"
+                [value]="displayedVInput"
+                (ionInput)="onInputChangeForReactionRate($event.target.value)" placeholder="Generated value" readonly>
+              </ion-input>
+            </ion-item>
+          </ion-card>
+        </ion-card>
+
+
+        <!-- Clear Button -->
+        <ion-button  expand="block" color="danger" (click)="clearAll()">Clear</ion-button>
+      </ion-card>
+    </div>
+    <div class="button-container">
+      <ion-button expand="block" (click)="toggleContent()">
+        {{ showContent ? 'Hide Details' : 'About Michaelis-Menten Equation Calculator' }}
+      </ion-button>
+    </div>
+    <div class="description-container" *ngIf="showContent">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Michaelis-Menten Equation</ion-card-title>
+
+        </ion-card-header>
+        <ion-card-content>
+          <p><strong>The Michaelis-Menten equation</strong> calculator allows you to explore the kinetics of a one-substrate reaction catalyzed by an enzyme. Michaelis-Menten kinetics helps determine the rate of the reaction, substrate concentration, Michaelis constant (Km), and the maximum rate of the reaction (Vmax).</p>
+          <br>
+          <h3>How to use the Michaelis-Menten equation calculator?</h3>
+          <p>To calculate the desired rate of the reaction, <strong>V</strong>, you will need the following data:</p>
+          <ul>
+            <li><strong>Vmax</strong> – the maximum rate of the reaction;</li>
+            <li><strong>[S]</strong> – the molar concentration of the substrate;</li>
+            <li><strong>Km</strong> – the Michaelis constant.</li>
+          </ul>
+      
+          <p>The formula used in the calculator is:</p>
+          <p><strong>V = (Vmax * [S]) / ([S] + Km)</strong></p>
+      
+          <p>Here’s what you need to know about the units:</p>
+          <ul>
+            <li>Both V and Vmax are written in units of s¯¹ (1/s).</li>
+            <li>If the concentration is entered in molars (M), the unit of V will be M/s.</li>
+            <li>If the concentration is entered in micromolar (μM), the unit of V will be μM/s.</li>
+          </ul>
+        </ion-card-content>
+        <div class="credits">
+          <p>Credits to Łucja Zaborowska, MD, PhD candidate</p>
+          <p>Reviewed by Bogna Szyk and Jack Bowater</p>
+        </div>
+      </ion-card>      
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,62 @@
+
+ion-content{
+    --background: linear-gradient(135deg, #152639, #213A57);
+}
+.chemlab-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    height: 100vh; /* Full viewport height */
+
+}
+.chemlab-container{
+    width: 750px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    h1{
+        margin-top: 20px;
+        color: #0AD1C8;
+        font-size: 40px;
+    }
+    h3{
+        margin-top: 30px;
+        color: aliceblue;
+        font-size: 25px;
+    }
+    p{
+        margin-top: 15px;
+        font-size: 17px;
+        color: aliceblue;
+        margin-bottom: 100px;
+    }
+    ion-card{
+        background-color: #0AD1C8;
+        color: #152639;
+        font-size: 18px;
+        font-weight: 500;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 110px;
+        padding-right: 110px;
+        cursor: pointer;
+        transition: all 0.3s ease; /* Smooth transition for all properties */
+    }
+    ion-card:hover{
+        background-color: #08b3aa ;
+        transform: scale(1.1); /* Slightly scale up the button */
+    }
+}
+
+.chemlab-logo{
+    width: 180px;
+    height: 180px;
+}
+h1, h2, h3, h4, h5, h6, p{
+    margin-top: 0;
+    margin-bottom: 0;
+}

@@ -1,0 +1,214 @@
+<ion-content [fullscreen]="false">
+  <!-- Header-Navigation Section -->
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>ChemLab</ion-title>
+      <ion-buttons slot="end">
+
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+
+
+    <!-- Calculate your CHemistry Banner Section -->
+  <div class="banner-text">
+    <h4>Calculate Your Chemistry</h4>
+    <p>At ChemLab, we simplify chemistry calculations, making science accessible and enjoyable for everyone.</p>
+  </div>
+
+  <!-- Chemistry, Biochemistry Button Section -->
+  <div class="segment">
+    <ion-segment>
+      <ion-segment-button value="first" content-id="first">
+        <ion-label>Chemistry</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="second" content-id="second">
+        <ion-label>Biochemistry</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  
+    <ion-segment-view>
+      <ion-segment-content id="first">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12" size-md="6" size-lg="4">
+              <a [routerLink]="['/atom-mass']" routerDirection="forward" class="card-link" style="text-decoration: none;">
+              <ion-card>
+                <ion-icon src="/assets/atom-mass.svg" class="menu-header-logo"></ion-icon>
+                <ion-card-content>
+                  <ion-card-title>Atom Mass</ion-card-title>
+                  <p>Determine the atomic mass of an element or compound from its formula.</p>
+                </ion-card-content>
+              </ion-card>
+              </a>
+            </ion-col>
+            <ion-col size="12" size-md="6" size-lg="4">
+              <a [routerLink]="['/atom-name']" routerDirection="forward" class="card-link" style="text-decoration: none;">
+              <ion-card>
+                <ion-icon src="/assets/atom-name.svg" class="menu-header-logo"></ion-icon>
+                <ion-card-content>
+                  <ion-card-title>Atom Name</ion-card-title>
+                  <p>Find the name of an atom based on its atomic number or symbol.</p>
+                </ion-card-content>
+              </ion-card>
+              </a>
+            </ion-col>
+            <ion-col size="12" size-md="6" size-lg="4">
+              <a [routerLink]="['/chemical-name']" routerDirection="forward" class="card-link" style="text-decoration: none;">
+
+              <ion-card>
+                <ion-icon src="/assets/chemical-name.svg" class="menu-header-logo"></ion-icon>
+                <ion-card-content>
+                  <ion-card-title>Chemical Name</ion-card-title>
+                  <p>Identify the chemical name from a given formula or structure.</p>
+                </ion-card-content>
+              </ion-card>
+              </a>
+            </ion-col>
+            <ion-col size="12" size-md="6" size-lg="4">
+              <a [routerLink]="['/electron-configuration']" routerDirection="forward" class="card-link" style="text-decoration: none;">
+              <ion-card>
+                <ion-icon src="/assets/electron-configuration.svg" class="menu-header-logo"></ion-icon>
+                <ion-card-content>
+                  <ion-card-title>Electron Configuration</ion-card-title>
+                  <p>Get the electron configuration of an element, including noble gas shorthand.</p>
+                </ion-card-content>
+              </ion-card>
+              </a>
+            </ion-col>
+            <ion-col size="12" size-md="6" size-lg="4">
+              <a [routerLink]="['/electronegativity']" routerDirection="forward" class="card-link" style="text-decoration: none;">
+
+              <ion-card>
+                <ion-icon src="/assets/electronegativity.svg" class="menu-header-logo"></ion-icon>
+                <ion-card-content>
+                  <ion-card-title>Electronegativity</ion-card-title>
+                  <p>Look up the electronegativity value of an element.</p>
+                </ion-card-content>
+              </ion-card>
+              </a>
+            </ion-col>
+            <ion-col size="12" size-md="6" size-lg="4">
+              <a [routerLink]="['/percent-composition']" routerDirection="forward" class="card-link" style="text-decoration: none;">
+              <ion-card>
+                <ion-icon src="/assets/percent-composition.svg" class="menu-header-logo"></ion-icon>
+                <ion-card-content>
+                  <ion-card-title>Percent Composition</ion-card-title>
+                  <p>Calculate the percentage of each element in a compound by mass.</p>
+                </ion-card-content>
+              </ion-card>
+              </a>
+            </ion-col>
+            <ion-col size="12" size-md="6" size-lg="4" >
+              <a [routerLink]="['/percent-ionic']" routerDirection="forward" class="card-link" style="text-decoration: none;">
+                <ion-card>
+                  <ion-icon src="/assets/percent-ionic.svg" class="menu-header-logo"></ion-icon>
+                  <ion-card-content>
+                    <ion-card-title>Percent Ionic</ion-card-title>
+                    <p>Estimate bond ionic character from electronegativity differences.</p>
+                  </ion-card-content>
+                </ion-card>
+              </a>
+            </ion-col>
+            <ion-col size="12" size-md="6" size-lg="4">
+              <a [routerLink]="['/pka']" routerDirection="forward" class="card-link" style="text-decoration: none;">
+              <ion-card>
+                <ion-icon src="/assets/pka.svg" class="menu-header-logo"></ion-icon>
+                <ion-card-content>
+                  <ion-card-title>pKₐ</ion-card-title>
+                  <p>Calculate a compound's pKa to predict its acidity and pH behavior.</p>
+                </ion-card-content>
+              </ion-card>
+              </a>
+            </ion-col>
+            <ion-col size="12" size-md="6" size-lg="4">
+              
+            </ion-col>
+            
+          </ion-row>
+        </ion-grid>
+      </ion-segment-content>
+
+      <ion-segment-content id="second">
+        <ion-grid>
+          <ion-row>
+            <ion-col ssize="12" size-md="6" size-lg="4">
+              <a [routerLink]="['/enzyme-activity']" routerDirection="forward" class="card-link" style="text-decoration: none;">
+
+              <ion-card>
+                <ion-icon src="/assets/enzyme-activity.svg" class="menu-header-logo"></ion-icon>
+                <ion-card-content>
+                  <ion-card-title>Enzyme Activity</ion-card-title>
+                  <p>Quantify enzyme activity under different experimental conditions.</p>
+                </ion-card-content>
+              </ion-card>
+              </a>
+            </ion-col>
+            <ion-col size="12" size-md="6" size-lg="4">
+              <a [routerLink]="['/isoelectric-point']" routerDirection="forward" class="card-link" style="text-decoration: none;">
+
+              <ion-card>
+                <ion-icon src="/assets/isoelectric-point.svg" class="menu-header-logo"></ion-icon>
+                <ion-card-content>
+                  <ion-card-title>Isoelectric Point</ion-card-title>
+                  <p>Find the pH at which a molecule carries no net electrical charge.</p>
+                </ion-card-content>
+              </ion-card>
+              </a>
+            </ion-col>
+            <ion-col size="12" size-md="6" size-lg="4">
+              <a [routerLink]="['/michaelis-menten-equation']" routerDirection="forward" class="card-link" style="text-decoration: none;">
+
+              <ion-card>
+                <ion-icon src="/assets/mme.svg" class="menu-header-logo"></ion-icon>
+                <ion-card-content>
+                  <ion-card-title>Michaelis-Menten Equation</ion-card-title>
+                  <p>Model enzyme kinetics and calculate reaction rates efficiently.</p>
+                </ion-card-content>
+              </ion-card>
+              </a>
+            </ion-col>
+            <ion-col size="12" size-md="6" size-lg="4">
+              <a [routerLink]="['/protein-solubility']" routerDirection="forward" class="card-link" style="text-decoration: none;">
+
+              <ion-card>
+                <ion-icon src="/assets/protein-solubility.svg" class="menu-header-logo"></ion-icon>
+                <ion-card-content>
+                  <ion-card-title>Protein Solubility</ion-card-title>
+                  <p>Determine protein solubility based on environmental factors and conditions.</p>
+                </ion-card-content>
+              </ion-card>
+              </a>
+            </ion-col>
+            <ion-col size="12" size-md="6" size-lg="4">
+              <a [routerLink]="['/resuspension']" routerDirection="forward" class="card-link" style="text-decoration: none;">
+
+              <ion-card>
+                <ion-icon src="/assets/resuspension.svg" class="menu-header-logo"></ion-icon>
+                <ion-card-content>
+                  <ion-card-title>Resuspension</ion-card-title>
+                  <p>Calculate optimal conditions for sample resuspension.</p>
+                </ion-card-content>
+              </ion-card>
+              </a>
+            </ion-col>
+            
+            
+            
+            <ion-col size="12" size-md="6" size-lg="4">
+              
+            </ion-col>
+            <ion-col size="12" size-md="6" size-lg="4">
+              
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-segment-content>
+    </ion-segment-view>
+  </div>
+  
+</ion-content>

@@ -1,0 +1,218 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Percent Composition</ion-title>
+    <ion-buttons slot="end">
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>  
+  <div class="percent-composition-content">
+    <ion-card class="calculator">
+      <ion-card-header class="calculator-header">
+        <ion-card-title>
+          Percent Composition Calculator
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-grid class="center-grid">
+        <ion-row class="center-row">
+          <ion-col size="12" size-md="6">
+            <div class="calc_content">
+              <!-- First Element -->
+                  <ion-card class="element-card">
+                    <ion-card class="element-card-content">
+                      <ion-item class="label" lines="none">
+                        <ion-label>First Element</ion-label>
+                        <ion-select slot="end" class="select" [(ngModel)]="selectedFirstElement" (ionChange)="onFirstElementChange()" interface="popover">
+                          <ion-select-option *ngFor="let option of elementOptions" [value]="option.value">
+                            {{ option.label }}
+                          </ion-select-option>
+                        </ion-select>
+                      </ion-item>
+                      <ion-item class="input">
+                        <ion-input type="number" [(ngModel)]="firstElementInput" (ionInput)="onFirstElementInputChange()" placeholder="Enter amount"></ion-input>
+                      </ion-item>
+                    </ion-card>
+                  </ion-card>
+                    
+              
+                    <!-- Second Element -->
+                  <ion-card class="element-card">
+                    <ion-card class="element-card-content">
+                      <ion-item class="label" lines="none">
+                        <ion-label>Second Element</ion-label>
+                        <ion-select slot="end" class="select" [(ngModel)]="selectedSecondElement" (ionChange)="onSecondElementChange()" interface="popover">
+                          <ion-select-option *ngFor="let option of elementOptions" [value]="option.value">
+                            {{ option.label }}
+                          </ion-select-option>
+                        </ion-select>
+                      </ion-item>
+                      <ion-item class="input">
+                        <ion-input type="number" [(ngModel)]="secondElementInput" (ionInput)="onSecondElementInputChange()" placeholder="Enter amount"></ion-input>
+                      </ion-item>
+                    </ion-card>
+                  </ion-card>
+                    
+                    
+              
+                    <!-- Third Element -->
+                  <ion-card class="element-card">
+                    <ion-card class="element-card-content">
+                      <ion-item class="label" lines="none">
+                        <ion-label>Third Element</ion-label>
+                        <ion-select slot="end" class="select" [(ngModel)]="selectedThirdElement" (ionChange)="onThirdElementChange()" interface="popover">
+                          <ion-select-option *ngFor="let option of elementOptions" [value]="option.value">
+                            {{ option.label }}
+                          </ion-select-option>
+                        </ion-select>
+                      </ion-item>
+                    
+                    
+                      <ion-item class="input">
+                        <ion-input type="number" [(ngModel)]="thirdElementInput" (ionInput)="onThirdElementInputChange()" placeholder="Enter amount"></ion-input>
+                      </ion-item>
+                    </ion-card>
+                  </ion-card>
+                    
+                    
+              
+                    <!-- Fourth Element -->
+                  <ion-card class="element-card">
+                    <ion-card class="element-card-content">
+                      <ion-item class="label" lines="none">
+                        <ion-label>Fourth Element</ion-label>
+                        <ion-select slot="end"  class="select" [(ngModel)]="selectedFourthElement" (ionChange)="onFourthElementChange()" interface="popover">
+                          <ion-select-option *ngFor="let option of elementOptions" [value]="option.value">
+                            {{ option.label }}
+                          </ion-select-option>
+                        </ion-select>
+                      </ion-item>
+                    
+                      <ion-item class="input">
+                        <ion-input type="number" [(ngModel)]="fourthElementInput" (ionInput)="onFourthElementInputChange()" placeholder="Enter amount"></ion-input>
+                      </ion-item>
+                    </ion-card>
+                  </ion-card>
+
+                    
+                    
+              
+                    <!-- Fifth Element -->
+                  <ion-card class="element-card">
+                    <ion-card class="element-card-content">
+                      <ion-item class="label" lines="none">
+                        <ion-label>Fifth Element</ion-label>
+                        <ion-select slot="end" class="select" [(ngModel)]="selectedFifthElement" (ionChange)="onFifthElementChange()" interface="popover">
+                          <ion-select-option *ngFor="let option of elementOptions" [value]="option.value">
+                            {{ option.label }}
+                          </ion-select-option>
+                        </ion-select>
+                      </ion-item>
+                      <ion-item class="input">
+                        <ion-input type="number" [(ngModel)]="fifthElementInput" (ionInput)="onFifthElementInputChange()" placeholder="Enter amount"></ion-input>
+                      </ion-item>
+                    </ion-card>
+                  </ion-card>
+                    
+              </div>
+
+            </ion-col>
+
+            
+            <ion-col size="12" size-md="6">
+              <!-- Chart Segment -->
+              <ion-card class="chart-card">
+                <ion-card-header>
+                  <ion-card-title>Element Mass Composition</ion-card-title>
+                </ion-card-header>
+                  
+                <ion-card class="chart-card-content">
+                  <!-- Table for Selected Elements and Their Percentages -->
+                  <div class="rows">
+                    <ion-row class="chart-rows">
+                      <ion-col>Element Symbol</ion-col>
+                      <ion-col>Mass</ion-col>
+                      <ion-col>Percentage</ion-col>
+                    </ion-row>
+    
+                    <ion-row class="chart-elements" *ngFor="let element of elements">
+                      <ion-col>{{ element.symbol }}</ion-col>
+                      <ion-col>{{ element.mass }}</ion-col>
+                      <ion-col>{{ element.percentage | number:'1.2-2' }}%</ion-col>
+                    </ion-row>
+                  </div>
+                  
+                </ion-card>
+              </ion-card>
+              
+                      <!-- Molecular Weight (Readonly) -->
+                <ion-card class="molecular">
+                  <ion-card class="molecular-content">
+                    <ion-item class="label" lines="none">
+                      <ion-label slot="start" >Molecular Weight</ion-label>
+                      <ion-input slot="end" readonly [(ngModel)]="molecularWeight" placeholder="Calculated molecular weight"></ion-input>
+                    </ion-item>
+                  </ion-card>
+                </ion-card>
+
+                <ion-button class="clear button-solid" color="danger" expand="block" (click)="clearInputs()">Clear</ion-button>
+
+              
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </ion-card>
+    <div class="button-container">
+      <ion-button expand="block" (click)="toggleContent()">
+        {{ showContent ? 'Hide Details' : 'About Percent Composition Calculator' }}
+      </ion-button>
+    </div>
+  </div>
+  <div class="description-container" *ngIf="showContent">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Percent Composition</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>
+            The percent composition of a compound expresses the weight (or mass) of each element in the compound as a percentage of the total weight of the compound. The formula for percent composition is given by:
+          </p>
+          <p>
+            <strong>element wgt% = (element mass / compound mass) × 100</strong>
+          </p>
+          <p>
+            Where:
+          </p>
+            <ul>
+              <li><strong>element wgt%</strong> – Percentage of the element present in the compound by mass;</li>
+              <li><strong>element mass</strong> – Mass of the element in one mole of the compound;</li>
+              <li><strong>compound mass</strong> – Mass of one mole of the compound or its molar mass.</li>
+            </ul>
+          
+          
+          <h3>How to use this percent composition calculator?</h3>
+          <p>
+            This percent composition calculator is a simple tool to use. It can support up to five elements in a compound.
+          </p>
+          <ol>
+            <li>In the field labeled <strong>Number of atoms of first element</strong>, you can select the element from the units drop-down list (five of the most common elements in compounds are the default).</li>
+            <li>Enter the number of atoms of the selected element in one molecule of the compound. For example, if the compound is H₂O, enter 2 atoms for hydrogen and 1 for oxygen.</li>
+            <li>Repeat these steps for every element in the compound.</li>
+            <li>The calculator will automatically calculate the percent composition by mass using the percent composition equation and display them in the corresponding fields in the <strong>Composition of each element</strong> group.</li>
+            <li>For the element fields you don't use, let their value stay at the default value of 0. Empty fields halt the calculation of molecular weight.</li>
+          </ol>
+        </ion-card-content>
+        <div class="credits">
+          <p>Credits to Krishna Nelaturu</p>
+        </div>
+      </ion-card>
+      
+    
+  </div>
+</ion-content>

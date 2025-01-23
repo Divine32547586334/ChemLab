@@ -1,0 +1,54 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay" menuId="mainMenu">
+      <ion-content>
+        <ion-list-header class="menu-header">
+          <div class="left-section" [routerLink]="['./home']" >
+            <ion-icon src="/assets/chemlab.svg" class="menu-header-logo"></ion-icon>
+            <h1>ChemLab</h1>
+          </div>
+        </ion-list-header>
+        <ion-list id="inbox-list">
+          <!-- Accordion Group for Sections -->
+          <ion-accordion-group [multiple]="false">
+
+            <!-- General Chemistry Section -->
+            <ion-accordion value="general">
+              <ion-item slot="header">
+                <ion-label>General Chemistry</ion-label>
+                <ion-icon class="ion-accordion-toggle-icon" name = "chevron-down" slot="end" color="white"></ion-icon>
+              </ion-item>
+              <div slot="content">
+                <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+                  <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+                    <ion-icon aria-hidden="true" slot="start" *ngIf="p.icon.includes('.svg')" [src]="p.icon"></ion-icon>
+                    <ion-label>{{ p.title }}</ion-label>
+                  </ion-item>
+                </ion-menu-toggle>
+              </div>
+            </ion-accordion>
+
+            <!-- Biochemistry Section -->
+            <ion-accordion value="biochemistry">
+              <ion-item slot="header">
+                <ion-label>Biochemistry</ion-label>
+                <ion-icon class="ion-accordion-toggle-icon" name= "chevron-down" slot="end" color="white"></ion-icon>
+              </ion-item>
+              <div slot="content">
+                <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages_second; let i = index">
+                  <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+                    <ion-icon aria-hidden="true" slot="start" *ngIf="p.icon.includes('.svg')" [src]="p.icon"></ion-icon>
+                    <ion-label>{{ p.title }}</ion-label>
+                  </ion-item>
+                </ion-menu-toggle>
+              </div>
+            </ion-accordion>
+
+          </ion-accordion-group>
+
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

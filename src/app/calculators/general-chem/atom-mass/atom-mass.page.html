@@ -1,0 +1,135 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Atom Mass</ion-title>
+    <ion-buttons slot="end">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="atomic-mass-content">
+    <div class="calculator-container">
+      <ion-card class="calculator">
+        <ion-card-header class="calculator-header">
+          <ion-card-title>
+            Atom Mass Calculator
+          </ion-card-title>
+        </ion-card-header>
+        
+        <ion-card class="first-card">
+          <ion-card class="first-card-content">
+            <!-- Number of Protons (Z) -->
+            <ion-item class="label" lines="none">
+              <ion-label>Number of protons (Z)</ion-label>
+            </ion-item>
+            <ion-item class="input">
+              <ion-input  type="number" [(ngModel)]="protons" (ionInput)="onProtonOrNeutronChange()" placeholder="Enter value"></ion-input>
+            </ion-item>
+  
+            <!-- Number of Neutrons (N) -->
+            <ion-item class="label" lines="none">
+              <ion-label>Number of neutrons (N)</ion-label>
+            </ion-item>
+            <ion-item class="input">
+              <ion-input type="number" [(ngModel)]="neutrons" (ionInput)="onProtonOrNeutronChange()" placeholder="Enter value"></ion-input>
+            </ion-item>
+          </ion-card>
+        </ion-card>
+  
+        <ion-card class="second-card">
+          <ion-card-header>
+            <ion-card-title>
+              Generated Output
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card class="atomic-mass-units">
+            <!-- Atomic Mass with Unit Selection -->
+            <ion-item class="label" lines="none">
+              <ion-label>Atomic mass</ion-label>
+              <ion-select class="select" [(ngModel)]="selectedAtomicMass" (ionChange)="onAtomicMassUnitChange()" slot="end" interface="popover">
+                <ion-select-option *ngFor="let option of atomicMassOptions" [value]="option.value">
+                  {{ option.label }}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item class="input">
+              <ion-input type="number" [(ngModel)]="atomicMass" (ionInput)="onAtomicMassInputChange()" placeholder="" readonly></ion-input>
+            </ion-item>
+          </ion-card>
+
+          
+            <!-- Atomic Mass (SI) with Unit Selection -->
+            <ion-card class="atomic-mass-si">
+            <ion-item class="label" lines="none">
+              <ion-label>Atomic mass (SI)</ion-label>
+              <ion-select [(ngModel)]="selectedAtomicMassSI" (ionChange)="onAtomicMassSIUnitChange()" slot="end" interface="popover">
+                <ion-select-option *ngFor="let option of atomicMassSIOptions" [value]="option.value">
+                  {{ option.label }}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item class="input">
+              <ion-input type="number" [(ngModel)]="atomicMassSI" (ionInput)="onAtomicMassSIInputChange()" placeholder="" readonly></ion-input>
+            </ion-item>
+          </ion-card>
+            
+          <ion-card class="mass-number">
+            <!-- Mass Number -->
+            <ion-item lines="none">
+              <ion-label slot="start">Mass number</ion-label>
+              <ion-input slot="end" type="number" [(ngModel)]="massNumber" placeholder="" readonly></ion-input>
+            </ion-item>
+          </ion-card>
+
+          <!-- Atomic Symbol and Stability Card -->
+          <ion-card class="additional-details" *ngIf="showSymbolCard">
+            <ion-card-content>
+              <p><strong>Atomic Symbol:</strong> {{ atomicSymbol }}</p>
+              <p><strong>Stability:</strong> {{ isStable ? 'Stable' : 'Unstable' }}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-card>
+        
+        <!-- Clear Button -->
+        <ion-button class="clear" expand="block" color="danger" (click)="clearFields()">Clear</ion-button>
+      </ion-card>
+      
+    </div>
+    <div class="button-container">
+      <ion-button expand="block" (click)="toggleContent()">
+        {{ showContent ? 'Hide Details' : 'About Atom Mass Calculator' }}
+      </ion-button>
+    </div>
+    <div class="description-container" *ngIf="showContent">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Atom Mass</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <h3>Atomic Mass Definition and Atomic Mass Formula</h3>
+          <p>The atomic mass is the mass of an atom, including its protons, neutrons, and electrons. However, because an electron is 1,836 times less massive than a proton, electrons account for an insignificant amount of mass in most atoms.</p>
+          <p>While you can state the atomic mass in kilograms, it is more usual to express it in atomic mass units (u), also called daltons (Da). One atomic mass unit (one dalton) equals 1/12 the mass of a carbon-12 atom. That makes one atomic mass unit equal to 1.66×10<sup>−27</sup> kg.</p>
+          <br>
+          <h3>How to Calculate Atomic Mass?</h3>
+          <p>To find a reasonable approximation of the atomic mass of an atom in atomic mass units, we can simply add the number of protons and neutrons. So the atomic mass formula is:</p>
+          <p><strong>atomic mass (u) = number of protons + number of neutrons</strong></p>
+          <p>Or</p>
+          <p><strong>A = Z + N</strong></p>
+          <ul>
+            <li><strong>A</strong> - Mass number (total number of protons and neutrons);</li>
+            <li><strong>Z</strong> - Number of protons in the atom;</li>
+            <li><strong>N</strong> - Number of neutrons in the atom.</li>
+          </ul>
+          <p>Note that the mass of an atom will be slightly less than its parts due to binding energy mass loss, which you can calculate using <em>E = mc²</em>.</p>
+        </ion-card-content>
+        <div class="credits">
+          <p>Credits to Steven Wooding</p>
+        </div>
+      </ion-card>
+      
+    </div>
+  </div>
+</ion-content>
